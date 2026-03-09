@@ -8,7 +8,8 @@ The project follows a standard, modern React/Vite application structure:
 
 - **`/src/pages/`**: Contains page-level components (`Home.tsx`, `AboutPage.tsx`, `ProjectsPage.tsx`, `ContactPage.tsx`, `BlogPost.tsx`). These act as the main views for the React Router.
 - **`/src/components/`**: Contains reusable UI sections and elements (`Navbar.tsx`, `Hero.tsx`, `About.tsx`, `Skills.tsx`, `Projects.tsx`, `Experience.tsx`, `Contact.tsx`, `Footer.tsx`, `BlogPage.tsx`).
-- **`/src/i18n.ts`**: Configuration file for internationalization (i18next), containing the translation dictionaries for English and Arabic.
+- **`/src/i18n.ts`**: Configuration file for internationalization (i18next).
+- **`/src/locales/`**: Contains translation JSON files (`en.json`, `ar.json`) for English and Arabic.
 - **`/src/index.css`**: The global stylesheet. It configures Tailwind CSS v4, imports Google Fonts, and sets up base layer styles (like dark mode and RTL font handling).
 - **`/src/App.tsx`**: The root application component. It sets up the routing (`react-router-dom`), global layout (Navbar and Footer), page transition wrapper (`AnimatePresence`), and dynamic HTML attributes for language direction.
 - **`/src/main.tsx`**: The React entry point that mounts the application to the DOM.
@@ -101,7 +102,7 @@ The project follows a standard, modern React/Vite application structure:
 - **Library**: `i18next` and `react-i18next`.
 - **RTL Handling**: The `App.tsx` file dynamically sets `document.documentElement.dir` to `rtl` or `ltr` based on the selected language. It also applies the Arabic font family. Tailwind's `rtl:` variants are used to flip icons and adjust margins/padding for right-to-left layouts (e.g., `rtl:group-hover:-translate-x-1`). Specific translations for blog navigation ("Back to Blog", "Share") have been added to support the full article view in both languages.
 - **Language Switcher**: A button in the Navbar toggles between the two languages.
-- **Translation Structure**: Translations are stored as nested JSON objects in `src/i18n.ts`.
+- **Translation Structure**: Translations are stored as separate JSON files in `src/locales/` and imported into `src/i18n.ts`.
 
 ## 12. Responsiveness
 - **Desktop**: Utilizes full side-by-side grid layouts (e.g., Hero text on the left, image on the right), with a fully visible horizontal navigation bar.
