@@ -24,6 +24,8 @@ const LANGUAGE_COLORS: Record<string, string> = {
   CSS: 'text-blue-300',
   Vue: 'text-emerald-500',
   PHP: 'text-indigo-400',
+  'C#': 'text-purple-400',
+  'C++': 'text-rose-400',
 };
 
 const FALLBACK_REPOS: Repo[] = [
@@ -110,7 +112,7 @@ export default function GitHubActivity() {
             className="flex items-center gap-2 px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-semibold hover:scale-105 transition-transform shadow-lg"
           >
             <Github size={20} />
-            {t('github.viewProfile')}
+            {t('github.viewAll')}
           </a>
         </div>
 
@@ -124,7 +126,7 @@ export default function GitHubActivity() {
               className="p-6 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl rounded-[2rem] border border-slate-200/50 dark:border-slate-800/50 hover:border-emerald-500/50 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col"
             >
               <div className="flex justify-between items-start mb-4">
-                <h4 className="text-xl font-bold font-display group-hover:text-emerald-500 transition-colors truncate pr-4">
+                <h4 className="text-xl font-bold font-display group-hover:text-emerald-500 transition-colors truncate pr-4 rtl:pr-0 rtl:pl-4">
                   {repo.name}
                 </h4>
                 <Github className="text-slate-400 group-hover:text-emerald-500 transition-colors shrink-0" size={24} />

@@ -36,7 +36,7 @@ export default function ResumeClient() {
             className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-emerald-500 transition-colors"
           >
             <ArrowLeft size={16} className="rtl:rotate-180" />
-            <span>{t('resume.backHome')}</span>
+            <span>{isAr ? 'العودة للرئيسية' : 'Back to Home'}</span>
           </Link>
 
           <div className="flex items-center gap-3">
@@ -45,7 +45,7 @@ export default function ResumeClient() {
               className="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-bold text-sm transition-all flex items-center gap-2 shadow-md shadow-emerald-500/20"
             >
               <Printer size={16} />
-              <span>{t('resume.printCv')}</span>
+              <span>{isAr ? 'طباعة / حفظ PDF' : 'Print / Save as PDF'}</span>
             </button>
           </div>
         </div>
@@ -70,7 +70,9 @@ export default function ResumeClient() {
                   {isAr ? PERSONAL_INFO.titleAr : PERSONAL_INFO.title}
                 </p>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                  Founder &amp; Technical Lead at Madboot Nova • 5+ Years Engineering
+                  {isAr 
+                    ? 'المؤسس والقائد التقني في مادبوت نوفا • خبرة 5+ سنوات في هندسة البرمجيات والعتاد' 
+                    : 'Founder & Technical Lead at Madboot Nova • 5+ Years Engineering'}
                 </p>
               </div>
 
@@ -100,10 +102,12 @@ export default function ResumeClient() {
           <div className="mb-8">
             <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-3 flex items-center gap-2">
               <Award size={14} />
-              EXECUTIVE SUMMARY
+              {isAr ? 'الملخص التنفيذي' : 'EXECUTIVE SUMMARY'}
             </h2>
             <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-              Senior Full-Stack Software Engineer and Technical Lead with 5+ years of engineering mastery across modern web applications, distributed systems, and physical hardware automation. Founder of Madboot Nova, lead architect on enterprise e-commerce and higher-education CMS platforms, and maker of custom 3-axis CNC machines with Arduino and G-code automation.
+              {isAr 
+                ? 'مهندس برمجيات شامل وقائد تقني يمتلك أكثر من 5 سنوات من الخبرة المعمارية العميقة في بناء تطبيقات الويب الحديثة، المنظومات الموزعة، وأتمتة الآلات والعتاد الفيزيائي. مؤسس وكالة مادبوت نوفا (Madboot Nova)، وكبير المعماريين لمنصات التعليم والتجارة الإلكترونية، ومصمم وباني آلات CNC ثلاثية المحاور بمتحكمات Arduino وأكواد G-Code.'
+                : 'Senior Full-Stack Software Engineer and Technical Lead with 5+ years of engineering mastery across modern web applications, distributed systems, and physical hardware automation. Founder of Madboot Nova, lead architect on enterprise e-commerce and higher-education CMS platforms, and maker of custom 3-axis CNC machines with Arduino and G-code automation.'}
             </p>
           </div>
 
@@ -111,7 +115,7 @@ export default function ResumeClient() {
           <div className="mb-8">
             <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-3 flex items-center gap-2">
               <Code2 size={14} />
-              CORE COMPETENCIES &amp; DOMAIN MASTERY
+              {isAr ? 'القدرات الجوهرية ومجالات التخصص' : 'CORE COMPETENCIES & DOMAIN MASTERY'}
             </h2>
             
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -136,7 +140,7 @@ export default function ResumeClient() {
           <div className="mb-8">
             <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-4 flex items-center gap-2">
               <Briefcase size={14} />
-              PROFESSIONAL WORK EXPERIENCE
+              {isAr ? 'الخبرات المهنية وسجل القيادة' : 'PROFESSIONAL WORK EXPERIENCE'}
             </h2>
 
             <div className="space-y-6">
@@ -182,7 +186,7 @@ export default function ResumeClient() {
           <div className="mb-8">
             <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-3 flex items-center gap-2">
               <GraduationCap size={14} />
-              EDUCATION &amp; ACADEMIC CREDENTIALS
+              {isAr ? 'المؤهلات والشهادات الأكاديمية' : 'EDUCATION & ACADEMIC CREDENTIALS'}
             </h2>
 
             <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200/80 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
@@ -195,7 +199,7 @@ export default function ResumeClient() {
                 </p>
               </div>
               <div className="text-xs font-mono text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">
-                {PERSONAL_INFO.education.period} • {PERSONAL_INFO.education.gpa}
+                {PERSONAL_INFO.education.period} • {isAr ? 'مرتبة الشرف' : PERSONAL_INFO.education.gpa}
               </div>
             </div>
           </div>
@@ -204,7 +208,7 @@ export default function ResumeClient() {
           <div className="pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-wrap justify-between items-center text-xs font-mono text-slate-500 gap-3">
             <span>Primary Handle: @ak01redwan</span>
             <span>Agency: madbootnova.com</span>
-            <span>Al-Mukalla, Hadhramaut, Yemen</span>
+            <span>{isAr ? 'المكلا، حضرموت، اليمن' : 'Al-Mukalla, Hadhramaut, Yemen'}</span>
           </div>
         </motion.div>
       </div>

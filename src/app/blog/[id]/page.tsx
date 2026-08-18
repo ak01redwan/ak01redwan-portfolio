@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import BlogPostClient from '../../../components/BlogPostClient';
 import { BLOG_POSTS_DATA } from '../../../data/portfolioData';
+import { SITE_CONFIG, SITE_URL, getCanonicalUrl, getOgImageUrl, generateBreadcrumbJsonLd } from '../../../lib/siteConfig';
 
 export const dynamicParams = false;
 
@@ -21,33 +22,35 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!post) {
     return {
-      title: 'Publication Not Found | Abdulrahman Redhwan',
+      title: `Publication Not Found | ${SITE_CONFIG.shortName}`,
     };
   }
 
-  const canonicalUrl = `https://madbootnova.com/blog/${post.id}`;
+  const canonicalUrl = getCanonicalUrl(`/blog/${post.id}`);
+  const imageUrl = getOgImageUrl('/og-image.png');
 
   return {
-    title: `${post.title} | Engineering Insights`,
+    title: `${post.title} | ${SITE_CONFIG.shortName} Insights`,
     description: post.excerpt,
     keywords: [
       post.title,
       post.category,
       'Software Architecture',
       'Engineering Insights',
-      'Abdulrahman Redhwan',
-      'Madboot Nova',
+      SITE_CONFIG.fullName,
+      SITE_CONFIG.shortName,
+      SITE_CONFIG.username,
     ],
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        'en-US': canonicalUrl,
-        'ar-YE': canonicalUrl,
+        'en': canonicalUrl,
+        'ar': canonicalUrl,
         'x-default': canonicalUrl,
       },
     },
     openGraph: {
-      title: `${post.title} | Abdulrahman Redhwan`,
+      title: `${post.title} | ${SITE_CONFIG.shortName}`,
       description: post.excerpt,
       url: canonicalUrl,
       type: 'article',
@@ -55,11 +58,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       modifiedTime: '2025-02-01T00:00:00.000Z',
       section: post.category,
       tags: [post.category, 'Software Engineering', 'Architecture'],
-      authors: ['https://madbootnova.com'],
+      authors: [SITE_URL],
       images: [
         {
-          url: 'https://madbootnova.com/og-image.png',
-          secureUrl: 'https://madbootnova.com/og-image.png',
+          url: imageUrl,
+          secureUrl: imageUrl,
           width: 1200,
           height: 630,
           type: 'image/png',
@@ -71,8 +74,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: ['https://madbootnova.com/og-image.png'],
-      creator: '@ak01redwan',
+      images: [imageUrl],
+      creator: `@${SITE_CONFIG.username}`,
     },
   };
 }
@@ -84,7 +87,8 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
-  const canonicalUrl = `https://madbootnova.com/blog/${post.id}`;
+  const canonicalUrl = getCanonicalUrl(`/blog/${post.id}`);
+  const imageUrl = getOgImageUrl('/og-image.png');
 
   const blogJsonLd = {
     '@context': 'https://schema.org',
@@ -101,40 +105,22 @@ export default async function BlogPostPage({ params }: PageProps) {
           '@type': 'WebPage',
           '@id': canonicalUrl,
         },
-        image: ['https://madbootnova.com/og-image.png'],
+        image: [imageUrl],
         author: {
-          '@id': 'https://madbootnova.com/#person',
+          '@id': `${SITE_URL}/#person`,
         },
         publisher: {
-          '@id': 'https://madbootnova.com/#organization',
+          '@id': `${SITE_URL}/#website`,
         },
         url: canonicalUrl,
         articleSection: post.category,
         keywords: `${post.category}, Software Architecture, Engineering Insights`,
       },
-      {
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          {
-            '@type': 'ListItem',
-            position: 1,
-            name: 'Home',
-            item: 'https://madbootnova.com',
-          },
-          {
-            '@type': 'ListItem',
-            position: 2,
-            name: 'Blog',
-            item: 'https://madbootnova.com/blog',
-          },
-          {
-            '@type': 'ListItem',
-            position: 3,
-            name: post.title,
-            item: canonicalUrl,
-          },
-        ],
-      },
+      generateBreadcrumbJsonLd([
+        { name: 'Home', path: '/' },
+        { name: 'Blog', path: '/blog' },
+        { name: post.title, path: `/blog/${post.id}` },
+      ]),
     ],
   };
 
@@ -150,4 +136,3 @@ export default async function BlogPostPage({ params }: PageProps) {
     </>
   );
 }
-

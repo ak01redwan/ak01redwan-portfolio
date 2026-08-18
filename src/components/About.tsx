@@ -22,10 +22,10 @@ export default function About() {
   const isAr = i18n.language === 'ar';
 
   const stats = [
-    { label: t('hero.stats.years'), value: '5+' },
-    { label: t('hero.stats.ciSpeed'), value: '< 3 Min' },
-    { label: t('hero.stats.precision'), value: '0.05 mm' },
-    { label: 'Honors Degree', value: 'GPA 3.9+' },
+    { label: t('hero.stats.years'), value: isAr ? '٥+' : '5+' },
+    { label: t('hero.stats.ciSpeed'), value: isAr ? '< ٣ دقائق' : '< 3 Min' },
+    { label: t('hero.stats.precision'), value: isAr ? '٠.٠٥ ملم' : '0.05 mm' },
+    { label: isAr ? 'مرتبة الشرف' : 'Honors Degree', value: isAr ? 'امتياز مع الشرف' : 'GPA 3.9+' },
   ];
 
   return (
@@ -62,7 +62,7 @@ export default function About() {
                   {isAr ? PERSONAL_INFO.education.degreeAr : PERSONAL_INFO.education.degree}
                 </div>
                 <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                  {isAr ? PERSONAL_INFO.education.institutionAr : PERSONAL_INFO.education.institution} ({PERSONAL_INFO.education.period}) • {PERSONAL_INFO.education.gpa}
+                  {isAr ? PERSONAL_INFO.education.institutionAr : PERSONAL_INFO.education.institution} ({PERSONAL_INFO.education.period}) • {isAr ? 'تخرج بامتياز مع مرتبة الشرف' : PERSONAL_INFO.education.gpa}
                 </div>
               </div>
             </div>

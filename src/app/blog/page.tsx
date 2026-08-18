@@ -1,79 +1,67 @@
 import { Metadata } from 'next';
 import BlogListClient from '../../components/BlogListClient';
+import { SITE_CONFIG, SITE_URL, getCanonicalUrl, getOgImageUrl, generateBreadcrumbJsonLd } from '../../lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Engineering Blog & Technical Insights',
-  description: 'Articles on software engineering architecture, Laravel & Nuxt performance, automated CI/CD pipelines, and physical CNC hardware manufacturing by Abdulrahman Redhwan.',
+  title: `Engineering Blog & Technical Insights | ${SITE_CONFIG.shortName}`,
+  description: `Technical deep dives on high-performance Laravel architecture, Nuxt 4 SSR, automated CI/CD pipelines, and custom 3-axis CNC hardware engineering by ${SITE_CONFIG.fullName} (${SITE_CONFIG.username}).`,
   alternates: {
-    canonical: 'https://madbootnova.com/blog',
+    canonical: getCanonicalUrl('/blog'),
     languages: {
-      'en-US': 'https://madbootnova.com/blog',
-      'ar-YE': 'https://madbootnova.com/blog',
-      'x-default': 'https://madbootnova.com/blog',
+      'en': getCanonicalUrl('/blog'),
+      'ar': getCanonicalUrl('/blog'),
+      'x-default': getCanonicalUrl('/blog'),
     },
   },
   openGraph: {
-    title: 'Engineering Blog & Technical Insights | Abdulrahman Redhwan',
-    description: 'Deep technical articles and guides on full-stack architecture, DevOps automation, and CNC machine design.',
-    url: 'https://madbootnova.com/blog',
+    title: `Engineering Blog & Technical Insights | ${SITE_CONFIG.shortName}`,
+    description: `Deep technical articles and architectural guides on full-stack web platforms, DevOps automation, and CNC machine design.`,
+    url: getCanonicalUrl('/blog'),
     type: 'website',
     images: [
       {
-        url: 'https://madbootnova.com/og-image.png',
-        secureUrl: 'https://madbootnova.com/og-image.png',
+        url: getOgImageUrl('/og-image.png'),
+        secureUrl: getOgImageUrl('/og-image.png'),
         width: 1200,
         height: 630,
         type: 'image/png',
-        alt: 'Abdulrahman Redhwan Engineering Blog',
+        alt: `${SITE_CONFIG.fullName} Engineering Blog`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Engineering Blog & Technical Insights | Abdulrahman Redhwan',
-    description: 'Articles on software architecture, DevOps, and hardware engineering.',
-    images: ['https://madbootnova.com/og-image.png'],
-    creator: '@ak01redwan',
+    title: `Engineering Blog & Technical Insights | ${SITE_CONFIG.shortName}`,
+    description: `Articles on software architecture, DevOps, and hardware engineering.`,
+    images: [getOgImageUrl('/og-image.png')],
+    creator: `@${SITE_CONFIG.username}`,
   },
 };
 
-const blogJsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'Blog',
-      '@id': 'https://madbootnova.com/blog#blog',
-      url: 'https://madbootnova.com/blog',
-      name: 'Abdulrahman Redhwan Engineering Blog',
-      description: 'Technical insights covering high-concurrency Laravel architecture, Nuxt 4 SSR, automated CI/CD engineering, and CNC machine fabrication.',
-      publisher: {
-        '@id': 'https://madbootnova.com/#organization',
-      },
-      author: {
-        '@id': 'https://madbootnova.com/#person',
-      },
-    },
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: 'https://madbootnova.com',
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Blog',
-          item: 'https://madbootnova.com/blog',
-        },
-      ],
-    },
-  ],
-};
-
 export default function BlogPage() {
+  const blogJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Blog',
+        '@id': `${getCanonicalUrl('/blog')}#blog`,
+        url: getCanonicalUrl('/blog'),
+        name: `${SITE_CONFIG.shortName} Engineering Blog`,
+        description: 'Technical insights covering high-concurrency Laravel architecture, Nuxt 4 SSR, automated CI/CD engineering, and CNC machine fabrication.',
+        publisher: {
+          '@id': `${SITE_URL}/#website`,
+        },
+        author: {
+          '@id': `${SITE_URL}/#person`,
+        },
+      },
+      generateBreadcrumbJsonLd([
+        { name: 'Home', path: '/' },
+        { name: 'Blog', path: '/blog' },
+      ]),
+    ],
+  };
+
   return (
     <>
       <script

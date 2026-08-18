@@ -1,14 +1,19 @@
 import { MetadataRoute } from 'next';
 import { CASE_STUDIES, BLOG_POSTS_DATA } from '../data/portfolioData';
+import { SITE_URL, getCanonicalUrl, getOgImageUrl } from '../lib/siteConfig';
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://madbootnova.com';
   const now = new Date();
   
-  const createEntry = (path: string, priority: number, changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never', image?: string) => {
-    const url = path ? `${baseUrl}${path}` : baseUrl;
+  const createEntry = (
+    path: string, 
+    priority: number, 
+    changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never', 
+    image?: string
+  ) => {
+    const url = getCanonicalUrl(path);
     return {
       url,
       lastModified: now,
@@ -16,12 +21,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority,
       alternates: {
         languages: {
-          'en-US': url,
-          'ar-YE': url,
+          'en': url,
+          'ar': url,
           'x-default': url,
         },
       },
-      images: image ? [image.startsWith('http') ? image : `${baseUrl}${image}`] : [`${baseUrl}/og-image.png`],
+      images: [image ? (image.startsWith('http') ? image : getOgImageUrl(image)) : getOgImageUrl('/og-image.png')],
     };
   };
 
@@ -31,7 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     createEntry('/projects', 0.9, 'weekly', '/og-image.png'),
     createEntry('/resume', 0.85, 'monthly', '/profile.png'),
     createEntry('/blog', 0.85, 'weekly', '/og-image.png'),
-    createEntry('/contact', 0.75, 'monthly', '/og-image.png'),
+    createEntry('/contact', 0.8, 'monthly', '/og-image.png'),
   ];
 
   const caseStudyPages: MetadataRoute.Sitemap = CASE_STUDIES.map((study) => 

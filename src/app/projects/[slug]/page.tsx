@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { CASE_STUDIES } from '../../../data/portfolioData';
 import ProjectDetailClient from '../../../components/ProjectDetailClient';
+import { SITE_CONFIG, SITE_URL, getCanonicalUrl, getOgImageUrl, generateBreadcrumbJsonLd } from '../../../lib/siteConfig';
 
 export const dynamicParams = false;
 
@@ -21,16 +22,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!study) {
     return {
-      title: 'Case Study Not Found | Abdulrahman Redhwan',
+      title: `Case Study Not Found | ${SITE_CONFIG.shortName}`,
     };
   }
 
-  const canonicalUrl = `https://madbootnova.com/projects/${study.slug}`;
+  const canonicalUrl = getCanonicalUrl(`/projects/${study.slug}`);
   const outcomeHighlights = study.measurableOutcomes.map(m => `${m.metric} ${m.label}`).join(', ');
-  const imageUrl = study.image.startsWith('http') ? study.image : `https://madbootnova.com${study.image}`;
+  const imageUrl = getOgImageUrl(study.image);
 
   return {
-    title: `${study.title} | Systems Architecture Case Study`,
+    title: `${study.title} | ${SITE_CONFIG.shortName} Case Study`,
     description: `${study.summary} Verified outcomes: ${outcomeHighlights}.`,
     keywords: [
       study.title,
@@ -38,14 +39,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       'Systems Architecture',
       'Full-Stack Engineering',
       'Case Study',
-      'Abdulrahman Redhwan',
-      'Madboot Nova',
+      SITE_CONFIG.fullName,
+      SITE_CONFIG.shortName,
+      SITE_CONFIG.username,
     ],
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        'en-US': canonicalUrl,
-        'ar-YE': canonicalUrl,
+        'en': canonicalUrl,
+        'ar': canonicalUrl,
         'x-default': canonicalUrl,
       },
     },
@@ -56,7 +58,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'article',
       publishedTime: '2024-01-01T00:00:00.000Z',
       modifiedTime: '2025-01-01T00:00:00.000Z',
-      authors: ['https://madbootnova.com'],
+      authors: [SITE_URL],
       section: 'Software Architecture & Engineering',
       tags: study.technologies,
       images: [
@@ -72,10 +74,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${study.title} | Abdulrahman Redhwan`,
+      title: `${study.title} | ${SITE_CONFIG.shortName}`,
       description: study.summary,
       images: [imageUrl],
-      creator: '@ak01redwan',
+      creator: `@${SITE_CONFIG.username}`,
     },
   };
 }
@@ -87,8 +89,8 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
     notFound();
   }
 
-  const imageUrl = study.image.startsWith('http') ? study.image : `https://madbootnova.com${study.image}`;
-  const canonicalUrl = `https://madbootnova.com/projects/${study.slug}`;
+  const canonicalUrl = getCanonicalUrl(`/projects/${study.slug}`);
+  const imageUrl = getOgImageUrl(study.image);
 
   const projectJsonLd = {
     '@context': 'https://schema.org',
@@ -105,10 +107,10 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
         dateModified: '2025-01-01T00:00:00.000Z',
         proficiencyLevel: 'Expert',
         author: {
-          '@id': 'https://madbootnova.com/#person',
+          '@id': `${SITE_URL}/#person`,
         },
         publisher: {
-          '@id': 'https://madbootnova.com/#organization',
+          '@id': `${SITE_URL}/#website`,
         },
         about: study.technologies.map((tech) => ({
           '@type': 'Thing',
@@ -123,32 +125,14 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
         programmingLanguage: study.technologies.filter(t => !t.includes('DevOps') && !t.includes('Hardware')),
         abstract: study.summary,
         author: {
-          '@id': 'https://madbootnova.com/#person',
+          '@id': `${SITE_URL}/#person`,
         },
       },
-      {
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          {
-            '@type': 'ListItem',
-            position: 1,
-            name: 'Home',
-            item: 'https://madbootnova.com',
-          },
-          {
-            '@type': 'ListItem',
-            position: 2,
-            name: 'Projects',
-            item: 'https://madbootnova.com/projects',
-          },
-          {
-            '@type': 'ListItem',
-            position: 3,
-            name: study.title,
-            item: canonicalUrl,
-          },
-        ],
-      },
+      generateBreadcrumbJsonLd([
+        { name: 'Home', path: '/' },
+        { name: 'Projects', path: '/projects' },
+        { name: study.title, path: `/projects/${study.slug}` },
+      ]),
     ],
   };
 
@@ -164,4 +148,3 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
     </>
   );
 }
-

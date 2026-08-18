@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { SITE_URL, getCanonicalUrl } from '../lib/siteConfig';
 
 export const dynamic = "force-static";
 
@@ -23,7 +24,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
     ],
-    sitemap: 'https://madbootnova.com/sitemap.xml',
-    host: 'https://madbootnova.com',
+    sitemap: getCanonicalUrl('/sitemap.xml'),
+    host: SITE_URL,
   };
 }

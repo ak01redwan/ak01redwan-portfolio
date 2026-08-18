@@ -6,24 +6,30 @@ import Projects from '../components/Projects';
 import Experience from '../components/Experience';
 import GitHubActivity from '../components/GitHubActivity';
 import Contact from '../components/Contact';
+import { SITE_CONFIG, SITE_URL, getCanonicalUrl, getOgImageUrl } from '../lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Abdulrahman Khalid Abdullah Redhwan | Full-Stack Software Engineer & Technical Lead',
-  description: 'Founder of Madboot Nova. 5+ years experience architecting high-throughput SaaS, e-commerce, and automated CI/CD workflows, plus physical 3-axis CNC hardware automation with Arduino and G-code.',
+  title: `${SITE_CONFIG.fullName} (${SITE_CONFIG.username}) | Full-Stack Software Engineer & Technical Lead`,
+  description: SITE_CONFIG.description,
   alternates: {
-    canonical: 'https://madbootnova.com',
+    canonical: getCanonicalUrl(),
+    languages: {
+      'en': getCanonicalUrl(),
+      'ar': getCanonicalUrl(),
+      'x-default': getCanonicalUrl(),
+    },
   },
   openGraph: {
-    title: 'Abdulrahman Khalid Abdullah Redhwan | Full-Stack Software Engineer & Technical Lead',
-    description: 'Senior Full-Stack Engineer bridging scalable software architectures (Laravel 12, Nuxt 4, Next.js, .NET Core) with physical CNC hardware automation.',
-    url: 'https://madbootnova.com',
+    title: `${SITE_CONFIG.fullName} (${SITE_CONFIG.username}) | Full-Stack Software Engineer & Technical Lead`,
+    description: SITE_CONFIG.description,
+    url: SITE_URL,
     type: 'website',
     images: [
       {
-        url: '/og-image.png',
+        url: getOgImageUrl('/og-image.png'),
         width: 1200,
         height: 630,
-        alt: 'Abdulrahman Khalid Abdullah Redhwan — Software Engineer & Technical Lead',
+        alt: `${SITE_CONFIG.fullName} (${SITE_CONFIG.username}) — Software Engineer & Technical Lead`,
       },
     ],
   },

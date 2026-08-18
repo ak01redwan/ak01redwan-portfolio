@@ -83,7 +83,7 @@ export default function Contact() {
                   <Mail className="text-emerald-500" size={20} />
                 </div>
                 <div>
-                  <p className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">{t('contact.info.email')}</p>
+                  <p className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">{t('contact.emailLabel')}</p>
                   <a href={`mailto:${PERSONAL_INFO.emails[0]}`} className="text-base font-bold text-slate-900 dark:text-white hover:text-emerald-500 transition-colors font-mono">
                     {PERSONAL_INFO.emails[0]}
                   </a>
@@ -95,7 +95,7 @@ export default function Contact() {
                   <Phone className="text-emerald-500" size={20} />
                 </div>
                 <div>
-                  <p className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">{t('contact.info.phone')}</p>
+                  <p className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">{t('contact.phoneLabel')}</p>
                   <div className="flex flex-col sm:flex-row sm:gap-4 font-mono text-sm font-bold text-slate-900 dark:text-white">
                     <a href={`tel:${PERSONAL_INFO.phones[0]}`} className="hover:text-emerald-500 transition-colors">{PERSONAL_INFO.phones[0]}</a>
                     <span className="text-slate-400 hidden sm:inline">•</span>
@@ -109,7 +109,7 @@ export default function Contact() {
                   <MapPin className="text-emerald-500" size={20} />
                 </div>
                 <div>
-                  <p className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">{t('contact.info.location')}</p>
+                  <p className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">{t('contact.locationLabel')}</p>
                   <p className="text-base font-bold text-slate-900 dark:text-white">
                     {isAr ? PERSONAL_INFO.locationAr : PERSONAL_INFO.location}
                   </p>
@@ -118,13 +118,15 @@ export default function Contact() {
             </div>
 
             <div>
-              <h3 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest mb-4">{t('contact.extra.socials.title')}</h3>
+              <h3 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest mb-4">
+                {isAr ? 'القنوات والمنصات المعتمدة' : 'Verified Engineering Profiles'}
+              </h3>
               <div className="flex flex-wrap gap-3">
                 {socials.map((social) => (
                   <a 
                     key={social.label}
                     href={social.href} 
-                    target="_blank"
+                    target="_blank" 
                     rel="noopener noreferrer"
                     className="w-11 h-11 rounded-xl bg-white dark:bg-slate-950 flex items-center justify-center border border-slate-200 dark:border-slate-800 text-slate-400 hover:text-emerald-500 hover:border-emerald-500 transition-all shadow-sm"
                     title={social.label}
@@ -146,16 +148,16 @@ export default function Contact() {
                   <CheckCircle2 size={36} />
                 </div>
                 <h3 className="text-2xl font-bold font-display text-slate-900 dark:text-white mb-2">
-                  Message Dispatched
+                  {t('contact.form.successTitle')}
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300 text-sm max-w-sm mb-6">
-                  Thank you for reaching out. Your transmission has been queued with a guaranteed &lt; 12 hour response SLA.
+                <p className="text-slate-600 dark:text-slate-300 text-sm max-w-sm mb-6 leading-relaxed">
+                  {t('contact.form.successDesc')}
                 </p>
                 <button
                   onClick={() => setIsSubmitted(false)}
                   className="px-6 py-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-bold font-mono transition-colors"
                 >
-                  Send Another Inquiry
+                  {isAr ? 'إرسال استفسار آخر' : 'Send Another Inquiry'}
                 </button>
               </div>
             ) : (
@@ -170,7 +172,7 @@ export default function Contact() {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder={t('contact.form.placeholder.name')}
+                      placeholder={t('contact.form.namePlaceholder')}
                       className="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition-all text-sm"
                     />
                   </div>
@@ -183,7 +185,7 @@ export default function Contact() {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder={t('contact.form.placeholder.email')}
+                      placeholder={t('contact.form.emailPlaceholder')}
                       className="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition-all text-sm"
                     />
                   </div>
@@ -196,7 +198,7 @@ export default function Contact() {
                     type="text" 
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    placeholder={t('contact.form.placeholder.subject')}
+                    placeholder={t('contact.form.subjectPlaceholder')}
                     className="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition-all text-sm"
                   />
                 </div>
@@ -209,14 +211,14 @@ export default function Contact() {
                     required
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder={t('contact.form.placeholder.message')}
+                    placeholder={t('contact.form.messagePlaceholder')}
                     className="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition-all resize-none text-sm"
                   ></textarea>
                 </div>
                 
                 <div className="flex items-center gap-2 text-xs text-slate-400 font-mono">
                   <ShieldCheck size={14} className="text-emerald-500 shrink-0" />
-                  <span>Guaranteed response within &lt; 12 hours. Direct founder review.</span>
+                  <span>{t('contact.slaDesc')}</span>
                 </div>
 
                 <button 
@@ -225,7 +227,7 @@ export default function Contact() {
                   className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 disabled:opacity-70 text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2 group shadow-lg shadow-emerald-500/20 text-sm cursor-pointer"
                 >
                   {isSubmitting ? (
-                    <span>Transmitting...</span>
+                    <span>{t('contact.form.sending')}</span>
                   ) : (
                     <>
                       <span>{t('contact.form.send')}</span>

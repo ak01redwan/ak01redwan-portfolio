@@ -1,76 +1,64 @@
 import { Metadata } from 'next';
 import ContactClient from '../../components/ContactClient';
+import { SITE_CONFIG, SITE_URL, getCanonicalUrl, getOgImageUrl, generateBreadcrumbJsonLd } from '../../lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Contact & Architectural Consultation | Abdulrahman Redhwan',
-  description: 'Initiate an engineering consultation or project inquiry with Abdulrahman Redhwan (ak01redwan) — Founder of Madboot Nova, Full-Stack Engineer & Technical Lead.',
+  title: `Contact & Architectural Consultation | ${SITE_CONFIG.shortName} (${SITE_CONFIG.username})`,
+  description: `Initiate an engineering consultation or project inquiry with ${SITE_CONFIG.fullName} (${SITE_CONFIG.username}) — Full-Stack Engineer, Technical Lead, and Founder of Madboot Nova. Guaranteed SLA response within 24 hours.`,
   alternates: {
-    canonical: 'https://madbootnova.com/contact',
+    canonical: getCanonicalUrl('/contact'),
     languages: {
-      'en-US': 'https://madbootnova.com/contact',
-      'ar-YE': 'https://madbootnova.com/contact',
-      'x-default': 'https://madbootnova.com/contact',
+      'en': getCanonicalUrl('/contact'),
+      'ar': getCanonicalUrl('/contact'),
+      'x-default': getCanonicalUrl('/contact'),
     },
   },
   openGraph: {
-    title: 'Contact Abdulrahman Redhwan | Engineering Inquiry',
-    description: 'Get in touch for enterprise software architecture, full-stack consulting, or hardware CNC automation projects.',
-    url: 'https://madbootnova.com/contact',
+    title: `Contact ${SITE_CONFIG.shortName} (${SITE_CONFIG.username}) | Engineering Inquiry`,
+    description: `Get in touch for enterprise software architecture, full-stack web platforms, API development, or hardware CNC automation projects.`,
+    url: getCanonicalUrl('/contact'),
     type: 'website',
     images: [
       {
-        url: 'https://madbootnova.com/og-image.png',
-        secureUrl: 'https://madbootnova.com/og-image.png',
+        url: getOgImageUrl('/og-image.png'),
+        secureUrl: getOgImageUrl('/og-image.png'),
         width: 1200,
         height: 630,
         type: 'image/png',
-        alt: 'Contact Abdulrahman Redhwan — Engineering Consultation',
+        alt: `Contact ${SITE_CONFIG.fullName} — Engineering Consultation`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact Abdulrahman Redhwan | Engineering Consultation',
-    description: 'Full-Stack Software Engineer & Technical Lead.',
-    images: ['https://madbootnova.com/og-image.png'],
-    creator: '@ak01redwan',
+    title: `Contact ${SITE_CONFIG.shortName} (${SITE_CONFIG.username}) | Engineering Consultation`,
+    description: `Full-Stack Software Engineer & Technical Lead. Direct consultation channel.`,
+    images: [getOgImageUrl('/og-image.png')],
+    creator: `@${SITE_CONFIG.username}`,
   },
 };
 
-const contactJsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'ContactPage',
-      '@id': 'https://madbootnova.com/contact#webpage',
-      url: 'https://madbootnova.com/contact',
-      name: 'Contact & Direct Engineering Consultation',
-      description: 'Direct inquiry channel for high-throughput software systems, cloud architecture, and CNC hardware projects.',
-      mainEntity: {
-        '@id': 'https://madbootnova.com/#person',
-      },
-    },
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: 'https://madbootnova.com',
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Contact',
-          item: 'https://madbootnova.com/contact',
-        },
-      ],
-    },
-  ],
-};
-
 export default function ContactPage() {
+  const contactJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'ContactPage',
+        '@id': `${getCanonicalUrl('/contact')}#webpage`,
+        url: getCanonicalUrl('/contact'),
+        name: `Contact & Direct Engineering Consultation — ${SITE_CONFIG.fullName}`,
+        description: `Direct inquiry channel for high-throughput software systems, cloud architecture, and CNC hardware projects with ${SITE_CONFIG.fullName}.`,
+        mainEntity: {
+          '@id': `${SITE_URL}/#person`,
+        },
+      },
+      generateBreadcrumbJsonLd([
+        { name: 'Home', path: '/' },
+        { name: 'Contact', path: '/contact' },
+      ]),
+    ],
+  };
+
   return (
     <>
       <script

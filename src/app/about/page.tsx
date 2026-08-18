@@ -1,80 +1,68 @@
 import { Metadata } from 'next';
 import AboutClient from '../../components/AboutClient';
+import { SITE_CONFIG, SITE_URL, getCanonicalUrl, getOgImageUrl, generateBreadcrumbJsonLd } from '../../lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'About Abdulrahman Khalid Abdullah Redhwan | Systems Architect & Maker',
-  description: 'Full-Stack Software Engineer, Technical Lead, and Founder of Madboot Nova. 5+ years experience spanning enterprise SaaS, Nuxt/Laravel SSR, .NET Core, and custom 3-axis CNC hardware machine fabrication.',
+  title: `About ${SITE_CONFIG.shortName} (${SITE_CONFIG.username}) | Systems Architect & Maker`,
+  description: `Biography and engineering philosophy of ${SITE_CONFIG.fullName} (${SITE_CONFIG.username}) — Full-Stack Software Engineer & Technical Lead specializing in enterprise SaaS, Laravel, Nuxt SSR, .NET Core, CI/CD, and custom 3-axis CNC hardware automation.`,
   alternates: {
-    canonical: 'https://madbootnova.com/about',
+    canonical: getCanonicalUrl('/about'),
     languages: {
-      'en-US': 'https://madbootnova.com/about',
-      'ar-YE': 'https://madbootnova.com/about',
-      'x-default': 'https://madbootnova.com/about',
+      'en': getCanonicalUrl('/about'),
+      'ar': getCanonicalUrl('/about'),
+      'x-default': getCanonicalUrl('/about'),
     },
   },
   openGraph: {
-    title: 'About Abdulrahman Redhwan | Full-Stack Engineer & Hardware Maker',
-    description: 'Learn about Abdulrahman Redhwan — Founder of Madboot Nova, Technical Lead, and maker of automated CNC machinery.',
-    url: 'https://madbootnova.com/about',
+    title: `About ${SITE_CONFIG.shortName} (${SITE_CONFIG.username}) | Full-Stack Engineer & Hardware Maker`,
+    description: `Learn about ${SITE_CONFIG.fullName} — Full-Stack Engineer, Technical Lead, and maker of automated CNC machinery.`,
+    url: getCanonicalUrl('/about'),
     type: 'profile',
     firstName: 'Abdulrahman',
     lastName: 'Redhwan',
-    username: 'ak01redwan',
+    username: SITE_CONFIG.username,
     gender: 'male',
     images: [
       {
-        url: 'https://madbootnova.com/og-image.png',
-        secureUrl: 'https://madbootnova.com/og-image.png',
+        url: getOgImageUrl('/og-image.png'),
+        secureUrl: getOgImageUrl('/og-image.png'),
         width: 1200,
         height: 630,
         type: 'image/png',
-        alt: 'Abdulrahman Redhwan Biography and Engineering Profile',
+        alt: `${SITE_CONFIG.fullName} Biography and Engineering Profile`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About Abdulrahman Redhwan | Systems Architect & Maker',
-    description: 'Full-Stack Software Engineer, Technical Lead, and Founder of Madboot Nova.',
-    images: ['https://madbootnova.com/og-image.png'],
-    creator: '@ak01redwan',
+    title: `About ${SITE_CONFIG.shortName} (${SITE_CONFIG.username}) | Systems Architect`,
+    description: `Full-Stack Software Engineer & Technical Lead. Software systems & CNC machine automation.`,
+    images: [getOgImageUrl('/og-image.png')],
+    creator: `@${SITE_CONFIG.username}`,
   },
 };
 
-const aboutJsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'ProfilePage',
-      '@id': 'https://madbootnova.com/about#webpage',
-      url: 'https://madbootnova.com/about',
-      name: 'About Abdulrahman Khalid Abdullah Redhwan',
-      description: 'Detailed professional background, architectural tenets, and hardware engineering biography.',
-      mainEntity: {
-        '@id': 'https://madbootnova.com/#person',
-      },
-    },
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: 'https://madbootnova.com',
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'About',
-          item: 'https://madbootnova.com/about',
-        },
-      ],
-    },
-  ],
-};
-
 export default function AboutPage() {
+  const aboutJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'ProfilePage',
+        '@id': `${getCanonicalUrl('/about')}#webpage`,
+        url: getCanonicalUrl('/about'),
+        name: `About ${SITE_CONFIG.fullName}`,
+        description: `Detailed professional background, architectural tenets, and hardware engineering biography of ${SITE_CONFIG.fullName}.`,
+        mainEntity: {
+          '@id': `${SITE_URL}/#person`,
+        },
+      },
+      generateBreadcrumbJsonLd([
+        { name: 'Home', path: '/' },
+        { name: 'About', path: '/about' },
+      ]),
+    ],
+  };
+
   return (
     <>
       <script

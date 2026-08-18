@@ -44,22 +44,34 @@ export default function HardwareDifferentiator() {
               />
               <div className="absolute top-4 right-4 bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-emerald-500/40 text-emerald-400 text-xs font-mono font-bold flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                G-CODE AUTOMATION: 0.05mm
+                {isAr ? 'أتمتة G-CODE بدقة ٠.٠٥ ملم' : 'G-CODE AUTOMATION: 0.05mm'}
               </div>
             </div>
 
             <div className="grid grid-cols-3 gap-4 text-center">
               <div className="p-3 bg-slate-900/80 rounded-xl border border-slate-800">
-                <div className="text-xl font-bold font-mono text-emerald-400">Arduino Core</div>
-                <div className="text-xs text-slate-400 mt-1">ATmega Microcontroller</div>
+                <div className="text-base sm:text-xl font-bold font-mono text-emerald-400">
+                  {isAr ? 'متحكمات Arduino' : 'Arduino Core'}
+                </div>
+                <div className="text-xs text-slate-400 mt-1">
+                  {isAr ? 'متحكم ATmega' : 'ATmega Microcontroller'}
+                </div>
               </div>
               <div className="p-3 bg-slate-900/80 rounded-xl border border-slate-800">
-                <div className="text-xl font-bold font-mono text-cyan-400">GRBL / Marlin</div>
-                <div className="text-xs text-slate-400 mt-1">Firmware Flashing</div>
+                <div className="text-base sm:text-xl font-bold font-mono text-cyan-400">
+                  GRBL / Marlin
+                </div>
+                <div className="text-xs text-slate-400 mt-1">
+                  {isAr ? 'برمجيات مضمنة' : 'Firmware Flashing'}
+                </div>
               </div>
               <div className="p-3 bg-slate-900/80 rounded-xl border border-slate-800">
-                <div className="text-xl font-bold font-mono text-indigo-400">1/16 Stepping</div>
-                <div className="text-xs text-slate-400 mt-1">Precision Motion</div>
+                <div className="text-base sm:text-xl font-bold font-mono text-indigo-400">
+                  {isAr ? 'دقة حركة ١/١٦' : '1/16 Stepping'}
+                </div>
+                <div className="text-xs text-slate-400 mt-1">
+                  {isAr ? 'حركة فائقة الدقة' : 'Precision Motion'}
+                </div>
               </div>
             </div>
           </div>

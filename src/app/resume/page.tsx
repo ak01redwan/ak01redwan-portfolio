@@ -1,80 +1,68 @@
 import { Metadata } from 'next';
 import ResumeClient from '../../components/ResumeClient';
+import { SITE_CONFIG, SITE_URL, getCanonicalUrl, getOgImageUrl, generateBreadcrumbJsonLd } from '../../lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Executive Curriculum Vitae (CV) & Engineering Credentials',
-  description: 'Official Curriculum Vitae of Abdulrahman Khalid Abdullah Redhwan (ak01redwan) — Founder of Madboot Nova, Full-Stack Engineer, Technical Lead, and Physical Hardware Maker.',
+  title: `Executive Curriculum Vitae (CV) & Verified Credentials | ${SITE_CONFIG.shortName}`,
+  description: `Official Curriculum Vitae of ${SITE_CONFIG.fullName} (${SITE_CONFIG.username}) — Full-Stack Engineer, Technical Lead, and Physical Hardware Maker with 5+ years of production experience in Laravel, Nuxt, Next.js, .NET Core, CI/CD, and CNC automation.`,
   alternates: {
-    canonical: 'https://madbootnova.com/resume',
+    canonical: getCanonicalUrl('/resume'),
     languages: {
-      'en-US': 'https://madbootnova.com/resume',
-      'ar-YE': 'https://madbootnova.com/resume',
-      'x-default': 'https://madbootnova.com/resume',
+      'en': getCanonicalUrl('/resume'),
+      'ar': getCanonicalUrl('/resume'),
+      'x-default': getCanonicalUrl('/resume'),
     },
   },
   openGraph: {
-    title: 'Curriculum Vitae | Abdulrahman Khalid Abdullah Redhwan',
-    description: 'Senior Full-Stack Software Engineer & Technical Lead CV and verification details.',
-    url: 'https://madbootnova.com/resume',
+    title: `Curriculum Vitae | ${SITE_CONFIG.fullName} (${SITE_CONFIG.username})`,
+    description: `Senior Full-Stack Software Engineer & Technical Lead CV, verified competencies, and academic credentials.`,
+    url: getCanonicalUrl('/resume'),
     type: 'profile',
     firstName: 'Abdulrahman',
     lastName: 'Redhwan',
-    username: 'ak01redwan',
+    username: SITE_CONFIG.username,
     gender: 'male',
     images: [
       {
-        url: 'https://madbootnova.com/og-image.png',
-        secureUrl: 'https://madbootnova.com/og-image.png',
+        url: getOgImageUrl('/og-image.png'),
+        secureUrl: getOgImageUrl('/og-image.png'),
         width: 1200,
         height: 630,
         type: 'image/png',
-        alt: 'Abdulrahman Redhwan CV & Verified Credentials',
+        alt: `${SITE_CONFIG.fullName} CV & Verified Credentials`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Curriculum Vitae | Abdulrahman Redhwan',
-    description: 'Full-Stack Software Engineer, Founder of Madboot Nova, and Hardware Maker.',
-    images: ['https://madbootnova.com/og-image.png'],
-    creator: '@ak01redwan',
+    title: `Curriculum Vitae | ${SITE_CONFIG.shortName} (${SITE_CONFIG.username})`,
+    description: `Full-Stack Software Engineer, Founder of Madboot Nova, and Hardware Maker.`,
+    images: [getOgImageUrl('/og-image.png')],
+    creator: `@${SITE_CONFIG.username}`,
   },
 };
 
-const resumeJsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'ProfilePage',
-      '@id': 'https://madbootnova.com/resume#webpage',
-      url: 'https://madbootnova.com/resume',
-      name: 'Curriculum Vitae & Verified Credentials — Abdulrahman Redhwan',
-      description: 'Executive CV detailing full-stack web engineering, .NET Core systems, CI/CD automation, and hardware CNC prototyping experience.',
-      mainEntity: {
-        '@id': 'https://madbootnova.com/#person',
-      },
-    },
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: 'https://madbootnova.com',
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Curriculum Vitae',
-          item: 'https://madbootnova.com/resume',
-        },
-      ],
-    },
-  ],
-};
-
 export default function ResumePage() {
+  const resumeJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'ProfilePage',
+        '@id': `${getCanonicalUrl('/resume')}#webpage`,
+        url: getCanonicalUrl('/resume'),
+        name: `Curriculum Vitae & Verified Credentials — ${SITE_CONFIG.fullName}`,
+        description: `Executive CV detailing full-stack web engineering, .NET Core systems, CI/CD automation, and hardware CNC prototyping experience of ${SITE_CONFIG.fullName}.`,
+        mainEntity: {
+          '@id': `${SITE_URL}/#person`,
+        },
+      },
+      generateBreadcrumbJsonLd([
+        { name: 'Home', path: '/' },
+        { name: 'Resume', path: '/resume' },
+      ]),
+    ],
+  };
+
   return (
     <>
       <script
