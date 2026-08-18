@@ -1,5 +1,8 @@
+"use client";
+
 import { Github, Linkedin, Twitter, ArrowUp, Terminal, Code2, PenTool, Box, Image, Dribbble, Phone } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '@/context/LanguageContext';
+import Link from 'next/link';
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -25,9 +28,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div>
-            <a href="#" className="text-xl font-display font-bold tracking-tighter">
+            <Link href="/" className="text-xl font-display font-bold tracking-tighter">
               AK01<span className="text-emerald-500">.</span>REDWAN
-            </a>
+            </Link>
             <p className="text-sm text-slate-500 mt-2">
               © {new Date().getFullYear()} ak01redwan. {t('footer.rights')}
             </p>

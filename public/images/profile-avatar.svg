@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <linearGradient id="avatarBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="emeraldAura" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="50%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <filter id="avatarGlow">
+      <feGaussianBlur stdDeviation="15" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="500" height="500" rx="36" fill="url(#avatarBg)" />
+
+  <!-- Outer ambient ring -->
+  <circle cx="250" cy="220" r="160" fill="none" stroke="url(#emeraldAura)" stroke-width="3" stroke-dasharray="12,8" opacity="0.6" />
+  
+  <!-- Silhouette / Stylized Engineer Portrait -->
+  <g transform="translate(100, 70)">
+    <!-- Circuit lines in backdrop -->
+    <path d="M 30 180 L 70 180 L 100 150" stroke="#10b981" stroke-width="2" fill="none" opacity="0.4" />
+    <circle cx="30" cy="180" r="4" fill="#10b981" />
+    <path d="M 270 180 L 230 180 L 200 150" stroke="#38bdf8" stroke-width="2" fill="none" opacity="0.4" />
+    <circle cx="270" cy="180" r="4" fill="#38bdf8" />
+
+    <!-- Head & Shoulders Silhouette -->
+    <!-- Shoulders -->
+    <path d="M 30 330 C 50 240, 100 220, 150 220 C 200 220, 250 240, 270 330 Z" fill="#0f172a" stroke="#334155" stroke-width="2" />
+    <path d="M 80 330 L 150 250 L 220 330" fill="none" stroke="#10b981" stroke-width="1.5" opacity="0.3" />
+    
+    <!-- Neck -->
+    <rect x="135" y="180" width="30" height="45" rx="4" fill="#1e293b" />
+    
+    <!-- Head Base -->
+    <ellipse cx="150" cy="140" rx="60" ry="75" fill="#1e293b" stroke="#475569" stroke-width="2" />
+    
+    <!-- Stylized Modern Glasses / HUD Visor -->
+    <rect x="100" y="125" width="100" height="28" rx="8" fill="#020617" stroke="url(#emeraldAura)" stroke-width="2" filter="url(#avatarGlow)" />
+    <line x1="110" y1="139" x2="190" y2="139" stroke="#10b981" stroke-width="2" />
+    <circle cx="125" cy="139" r="4" fill="#38bdf8" />
+    <circle cx="175" cy="139" r="4" fill="#38bdf8" />
+  </g>
+
+  <!-- Bottom Badges / Tech Signature -->
+  <g transform="translate(60, 410)">
+    <!-- Badge 1: Software -->
+    <rect width="180" height="42" rx="21" fill="#0f172a" stroke="#10b981" stroke-width="1.5" />
+    <circle cx="25" cy="21" r="6" fill="#10b981" />
+    <text x="42" y="26" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700" fill="#f8fafc">FULL-STACK LEAD</text>
+
+    <!-- Badge 2: Hardware -->
+    <rect x="200" width="180" height="42" rx="21" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+    <circle cx="225" cy="21" r="6" fill="#38bdf8" />
+    <text x="242" y="26" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700" fill="#f8fafc">CNC &amp; HARDWARE</text>
+  </g>
+</svg>

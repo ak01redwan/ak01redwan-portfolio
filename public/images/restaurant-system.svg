@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="bgRest" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bgRest)" />
+
+  <rect x="50" y="40" width="700" height="420" rx="14" fill="#0b1329" stroke="#334155" stroke-width="1.5" />
+  
+  <!-- Window Header -->
+  <rect x="50" y="40" width="700" height="40" rx="14" fill="#0f172a" />
+  <circle cx="75" cy="60" r="5" fill="#ef4444" />
+  <circle cx="92" cy="60" r="5" fill="#f59e0b" />
+  <circle cx="109" cy="60" r="5" fill="#10b981" />
+  <text x="140" y="64" font-family="sans-serif" font-size="11" font-weight="600" fill="#cbd5e1">Novel Soft • POS &amp; Restaurant Operations Hub (Node.js, Express, SQL Server, Docker)</text>
+
+  <!-- Live Orders Queue & POS UI -->
+  <g transform="translate(80, 100)">
+    <!-- Header Summary -->
+    <rect x="0" y="0" width="640" height="55" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="20" y="24" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700" fill="#ffffff">Kitchen Display &amp; Real-time POS Dispatch</text>
+    <text x="20" y="44" font-family="sans-serif" font-size="11" fill="#94a3b8">Sub-50ms Transaction Latency • SQL Server Clustered Indexes • Dockerized Micro-APIs</text>
+
+    <!-- 3 Order Cards -->
+    <g transform="translate(0, 70)">
+      <!-- Order 1 -->
+      <rect x="0" y="0" width="200" height="230" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.5" />
+      <rect x="0" y="0" width="200" height="32" rx="8" fill="#10b981" fill-opacity="0.2" />
+      <text x="15" y="20" font-family="monospace" font-size="11" font-weight="700" fill="#10b981">TABLE #04 • READY</text>
+      <text x="15" y="55" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Order #2094</text>
+      <text x="15" y="75" font-family="sans-serif" font-size="11" fill="#94a3b8">• 2x Prime Steak Special</text>
+      <text x="15" y="95" font-family="sans-serif" font-size="11" fill="#94a3b8">• 1x Truffle Risotto</text>
+      <text x="15" y="115" font-family="sans-serif" font-size="11" fill="#94a3b8">• 3x Fresh Beverages</text>
+      <rect x="15" y="180" width="170" height="32" rx="6" fill="#10b981" />
+      <text x="100" y="200" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#ffffff">Dispatched</text>
+
+      <!-- Order 2 -->
+      <rect x="220" y="0" width="200" height="230" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5" />
+      <rect x="220" y="0" width="200" height="32" rx="8" fill="#f59e0b" fill-opacity="0.2" />
+      <text x="235" y="20" font-family="monospace" font-size="11" font-weight="700" fill="#f59e0b">TABLE #12 • COOKING</text>
+      <text x="235" y="55" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Order #2095</text>
+      <text x="235" y="75" font-family="sans-serif" font-size="11" fill="#94a3b8">• 4x Gourmet Smash Burgers</text>
+      <text x="235" y="95" font-family="sans-serif" font-size="11" fill="#94a3b8">• 2x Loaded Fries</text>
+      <text x="235" y="115" font-family="sans-serif" font-size="11" fill="#94a3b8">• 4x Espresso Blend</text>
+      <rect x="235" y="180" width="170" height="32" rx="6" fill="#f59e0b" />
+      <text x="320" y="200" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#0f172a">In Preparation</text>
+
+      <!-- Order 3 -->
+      <rect x="440" y="0" width="200" height="230" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+      <rect x="440" y="0" width="200" height="32" rx="8" fill="#38bdf8" fill-opacity="0.2" />
+      <text x="455" y="20" font-family="monospace" font-size="11" font-weight="700" fill="#38bdf8">DELIVERY • QUEUED</text>
+      <text x="455" y="55" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Order #2096</text>
+      <text x="455" y="75" font-family="sans-serif" font-size="11" fill="#94a3b8">• 1x Family Seafood Feast</text>
+      <text x="455" y="95" font-family="sans-serif" font-size="11" fill="#94a3b8">• 2x Caesar Salad Bowl</text>
+      <text x="455" y="115" font-family="sans-serif" font-size="11" fill="#94a3b8">• 1x Chocolate Lava Cake</text>
+      <rect x="455" y="180" width="170" height="32" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+      <text x="540" y="200" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#94a3b8">Pending Cook</text>
+    </g>
+  </g>
+</svg>

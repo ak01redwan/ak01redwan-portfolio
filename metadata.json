@@ -1,5 +1,6 @@
 {
-  "name": "Professional Developer Portfolio",
-  "description": "A modern, minimal, and professional portfolio for a senior full-stack software developer with 10+ years of experience.",
-  "requestFramePermissions": []
+  "name": "Abdulrahman Redhwan Portfolio",
+  "description": "Production-grade portfolio and architectural showcase of Abdulrahman Khalid Abdullah Redhwan (ak01redwan) — Full-Stack Software Engineer, Technical Lead, and Founder of Madboot Nova.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

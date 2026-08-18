@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="bgUniv" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bgUniv)" />
+
+  <rect x="50" y="40" width="700" height="420" rx="14" fill="#0b1329" stroke="#334155" stroke-width="1.5" />
+  
+  <!-- Window Header -->
+  <rect x="50" y="40" width="700" height="40" rx="14" fill="#0f172a" />
+  <circle cx="75" cy="60" r="5" fill="#ef4444" />
+  <circle cx="92" cy="60" r="5" fill="#f59e0b" />
+  <circle cx="109" cy="60" r="5" fill="#10b981" />
+  <text x="140" y="64" font-family="sans-serif" font-size="11" font-weight="600" fill="#cbd5e1">Al-Ahgaff University • Student &amp; Course Management (Web + Electron.Net Desktop)</text>
+
+  <!-- Content Grid -->
+  <g transform="translate(80, 100)">
+    <!-- Header Banner -->
+    <rect x="0" y="0" width="640" height="60" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="20" y="26" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700" fill="#ffffff">University Administration Portal</text>
+    <text x="20" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Hadhramaut Center • Multi-Campus Cross-Platform Architecture (.NET Core &amp; Electron.Net)</text>
+
+    <!-- Stat boxes -->
+    <g transform="translate(0, 75)">
+      <rect x="0" y="0" width="200" height="90" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1" />
+      <text x="15" y="28" font-family="sans-serif" font-size="11" fill="#94a3b8">ACTIVE STUDENTS</text>
+      <text x="15" y="65" font-family="'Space Grotesk', sans-serif" font-size="28" font-weight="800" fill="#10b981">12,500+</text>
+
+      <rect x="220" y="0" width="200" height="90" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+      <text x="235" y="28" font-family="sans-serif" font-size="11" fill="#94a3b8">SEMESTER COURSES</text>
+      <text x="235" y="65" font-family="'Space Grotesk', sans-serif" font-size="28" font-weight="800" fill="#38bdf8">340+</text>
+
+      <rect x="440" y="0" width="200" height="90" rx="8" fill="#0f172a" stroke="#a78bfa" stroke-width="1" />
+      <text x="455" y="28" font-family="sans-serif" font-size="11" fill="#94a3b8">CLIENT RUNTIMES</text>
+      <text x="455" y="65" font-family="'Space Grotesk', sans-serif" font-size="20" font-weight="700" fill="#a78bfa">Web &amp; Desktop</text>
+    </g>
+
+    <!-- Table Mockup -->
+    <g transform="translate(0, 180)">
+      <rect x="0" y="0" width="640" height="150" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+      <rect x="0" y="0" width="640" height="32" rx="8" fill="#0f172a" />
+      <text x="20" y="20" font-family="sans-serif" font-size="11" font-weight="700" fill="#94a3b8">STUDENT ID</text>
+      <text x="160" y="20" font-family="sans-serif" font-size="11" font-weight="700" fill="#94a3b8">MAJOR / PROGRAM</text>
+      <text x="360" y="20" font-family="sans-serif" font-size="11" font-weight="700" fill="#94a3b8">ACADEMIC STATUS</text>
+      <text x="520" y="20" font-family="sans-serif" font-size="11" font-weight="700" fill="#94a3b8">ENROLLMENT</text>
+
+      <text x="20" y="55" font-family="monospace" font-size="11" fill="#ffffff">#AH-2023-8841</text>
+      <text x="160" y="55" font-family="sans-serif" font-size="11" fill="#cbd5e1">Computer Information Systems</text>
+      <text x="360" y="55" font-family="sans-serif" font-size="11" fill="#34d399">✓ Verified (GPA 3.92)</text>
+      <text x="520" y="55" font-family="sans-serif" font-size="11" fill="#38bdf8">Completed</text>
+
+      <line x1="15" y1="70" x2="625" y2="70" stroke="#334155" stroke-width="1" />
+
+      <text x="20" y="95" font-family="monospace" font-size="11" fill="#ffffff">#AH-2023-8842</text>
+      <text x="160" y="95" font-family="sans-serif" font-size="11" fill="#cbd5e1">Software Engineering &amp; AI</text>
+      <text x="360" y="95" font-family="sans-serif" font-size="11" fill="#34d399">✓ Verified (GPA 3.88)</text>
+      <text x="520" y="95" font-family="sans-serif" font-size="11" fill="#38bdf8">Completed</text>
+    </g>
+  </g>
+</svg>

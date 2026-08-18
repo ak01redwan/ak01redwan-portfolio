@@ -2,180 +2,170 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "projects": "Projects",
+    "projects": "Case Studies",
+    "skills": "Skills",
+    "experience": "Experience",
     "contact": "Contact",
-    "blog": "Blog"
+    "blog": "Insights",
+    "resume": "Resume",
+    "downloadCv": "Download CV",
+    "commandPalette": "Search & Quick Actions",
+    "quickNav": "Press ⌘K or Ctrl+K"
   },
   "hero": {
-    "tag": "Full Stack Software Developer",
-    "title": "Building Scalable Digital Systems",
-    "name": "Abdulrahman Khalid Abdullah Redhwan",
-    "desc": "Senior Full Stack Developer and Systems Architect with 10+ years of experience specializing in backend architecture, high-performance APIs, and scalable web applications.",
-    "viewProjects": "View Projects",
-    "contactMe": "Contact Me"
+    "tag": "Full-Stack Software Engineer & Technical Lead",
+    "agencyTag": "Founder of Madboot Nova",
+    "titlePrefix": "Abdulrahman",
+    "titleMiddle": "Khalid",
+    "titleSuffix": "Redhwan",
+    "badgeAvailability": "Available for Tech Lead & Systems Consulting",
+    "valuePropHeadline": "Bridging Enterprise Web Architecture with Physical Hardware Engineering.",
+    "valuePropDesc": "Founder of Madboot Nova with 5+ years architecting scalable SaaS ecosystems (Laravel 12, Next.js, Nuxt.js 4, .NET Core) AND independently engineering automated 3-axis CNC machinery (G-Code, Marlin/GRBL, Arduino). Delivering high-throughput software and physical automation.",
+    "exploreProjects": "Explore Case Studies",
+    "initiateContact": "Initiate Engagement",
+    "viewGithub": "GitHub Profile",
+    "stats": {
+      "years": "Years Engineering",
+      "deployments": "Automated Deployments",
+      "precision": "CNC Machine Precision",
+      "ciSpeed": "Automated CI/CD Time"
+    }
+  },
+  "differentiator": {
+    "badge": "Unique Engineering Differentiator",
+    "title": "Software Architecture Meets Physical Machine Automation",
+    "subtitle": "Very few web engineers bridge software and physical hardware. I build both enterprise digital platforms and automated CNC machinery.",
+    "softwarePillar": {
+      "title": "Enterprise Software Engineering",
+      "desc": "Laravel 12, Nuxt.js 4, Next.js 16, .NET Core microservices, automated CI/CD pipelines, high-concurrency database indexing, and secure API gateways."
+    },
+    "hardwarePillar": {
+      "title": "Physical Hardware & Automation",
+      "desc": "Independently built a functional 3-axis CNC machine. Precision G-Code/M-Code execution, Arduino microcontrollers, custom Marlin/GRBL firmware calibration, and 0.05mm microstepping."
+    },
+    "viewHardwareStudy": "Inspect CNC Case Study"
   },
   "about": {
-    "tag": "About Me",
-    "title": "Architecting robust systems for the modern web.",
-    "p1": "I am Abdulrahman Khalid Abdullah Redhwan, a Full Stack Software Developer with more than 10 years of experience. I specialize primarily in backend development, system architecture, and building scalable web applications that stand the test of time.",
-    "p2": "My expertise spans multiple programming languages and frameworks, with a proven track record of building modern web platforms, e-commerce systems, robust APIs, and microservices. I am deeply passionate about clean code, design patterns, performance optimization, and Big O analysis.",
-    "stats": {
-      "years": "Years Experience",
-      "projects": "Projects Completed",
-      "clients": "Happy Clients",
-      "code": "Lines of Code"
+    "tag": "Executive Profile",
+    "title": "Senior Full-Stack Engineer, Technical Lead & Hardware Maker",
+    "location": "Al-Mukalla, Hadhramaut, Yemen",
+    "bioP1": "I am Abdulrahman Khalid Abdullah Redhwan (ak01redwan), Founder & Technical Lead at Madboot Nova. With 5+ years of software architecture tenure, I specialize in designing scalable digital ecosystems, optimizing high-concurrency databases, and leading agile engineering teams to deliver mission-critical software.",
+    "bioP2": "Graduating with honors in Computer Information Systems from Al-Ahgaff University, my engineering depth spans Laravel 12, Nuxt.js 4, React/Next.js, and .NET Core. Beyond the screen, I am an electro-mechanical maker who designed, wired, and calibrated a fully functional 3-axis CNC milling machine powered by Arduino and G-Code automation.",
+    "philosophyTitle": "Engineering Philosophy & Core Tenets",
+    "philosophyP1": "I treat software architecture as an exact discipline. Code is a liability unless it is reliable, maintainable, and directly serves measurable business objectives. From automating multi-stage CI/CD deployments in under 3 minutes to tuning SQL execution plans, I enforce zero-compromise engineering quality.",
+    "tenets": {
+      "t1": "Automated CI/CD by Default",
+      "t1Desc": "No manual SSH deployments; every push runs automated test suites and zero-downtime atomic rollouts.",
+      "t2": "Hardware-Grade Precision",
+      "t2Desc": "Applying mechanical tolerance rigor to software system boundaries, eliminating race conditions.",
+      "t3": "Clean Decoupled Architecture",
+      "t3Desc": "Enforcing Service-Repository patterns, domain-driven boundaries, and strict OpenAPI contracts.",
+      "t4": "Developer Mentorship & Leadership",
+      "t4Desc": "Empowering cross-functional teams through structured knowledge transfer and empathetic technical leadership."
     },
-    "features": {
-      "f1": "System Architecture",
-      "f2": "Backend Excellence",
-      "f3": "E-commerce Solutions",
-      "f4": "Performance Tuning"
-    },
-    "philosophy": {
-      "title": "My Philosophy",
-      "p1": "I believe that great software is built on a foundation of maintainability and scalability. My approach focuses on performance optimization and the implementation of robust design patterns to solve complex architectural challenges.",
-      "p2": "Whether it's transitioning legacy systems to modern architectures or building microservices from scratch, I prioritize clean code and system resilience to ensure long-term success."
-    },
-    "values": {
-      "title": "Core Values",
-      "v1": "Scalability by Design",
-      "v2": "Clean Code Standards",
-      "v3": "Performance Optimization",
-      "v4": "Architectural Integrity",
-      "v5": "Continuous Innovation"
-    }
+    "educationTitle": "Academic Background",
+    "educationDegree": "B.Sc. Computer Science / Computer Information Systems",
+    "educationInst": "Al-Ahgaff University (2019 – 2023) • Graduated with Honors",
+    "viewCv": "Review Interactive Resume"
   },
   "skills": {
-    "tag": "Expertise",
-    "title": "Technical Skillset",
-    "categories": {
-      "backend": "Backend & Architecture",
-      "frontend": "Frontend Development",
-      "databases": "Databases & Optimization",
-      "devops": "Tools & Infrastructure"
-    }
+    "tag": "Technical Mastery",
+    "title": "Comprehensive Stack & Specialized Domains",
+    "desc": "Categorized mastery across backend architectures, modern server-rendered frontends, hardware firmware, and automated DevOps pipelines."
   },
   "projects": {
-    "tag": "Portfolio",
-    "title": "Featured Projects",
-    "desc": "A showcase of my work in building scalable applications, e-commerce integrations, and specialized web tools.",
-    "viewAll": "View All Projects",
-    "more": {
-      "title": "Looking for more?",
-      "desc": "I have worked on numerous software systems including desktop applications, AI-powered tools, and complex CMS platforms. Let's discuss how my experience can help your project.",
-      "github": "Visit My GitHub"
-    },
-    "items": {
-      "ecommerce": {
-        "title": "nopCommerce Integrations",
-        "desc": "Building custom payment and shipping integrations for nopCommerce and Smartstore platforms."
-      },
-      "ai": {
-        "title": "AI Background Remover",
-        "desc": "Web application built with Python, Flask, and rembg for automatic image background removal."
-      },
-      "university": {
-        "title": "University CMS Systems",
-        "desc": "Architected and built the Ahgaff University website using .NET/Umbraco, later transitioned to Python/Django."
-      },
-      "microservices": {
-        "title": "SrmedEco Platform",
-        "desc": "A microservices-based e-commerce system providing digital solutions and complex integrations."
-      }
+    "tag": "Flagship Case Studies",
+    "title": "Enterprise Deployments & Engineering Case Studies",
+    "desc": "In-depth technical breakdowns of production systems, architecture diagrams, and measurable impact metrics.",
+    "viewCaseStudy": "Read Full Case Study",
+    "filterAll": "All Case Studies",
+    "filterFullStack": "Full-Stack & Web",
+    "filterHardware": "Hardware & Automation",
+    "filterEcommerce": "E-Commerce",
+    "filterEnterprise": "Enterprise Systems",
+    "caseStudyDetails": {
+      "problem": "The Challenge & Context",
+      "approach": "Engineering Approach & Architecture",
+      "outcomes": "Measurable Outcomes & Business Impact",
+      "architectureHighlights": "Key Architecture Highlights",
+      "techStack": "Technologies Deployed",
+      "backToProjects": "Back to All Case Studies",
+      "liveDemo": "Visit Production System",
+      "sourceCode": "View GitHub Repository"
     }
   },
   "experience": {
-    "tag": "Journey",
-    "title": "Professional Experience",
-    "items": {
-      "exp1": {
-        "company": "Madboot Nova",
-        "role": "Senior Software Engineer",
-        "period": "Present",
-        "desc": "Providing software systems, hosting services, and e-commerce solutions. Leading web development and architectural design for diverse client needs."
-      },
-      "exp2": {
-        "company": "SrmedEco",
-        "role": "Full Stack Developer / Architect",
-        "period": "2018 - 2022",
-        "desc": "Developed a microservices-based e-commerce platform. Focused on digital solutions, API integrations, and system scalability."
-      },
-      "exp3": {
-        "company": "Ahgaff University",
-        "role": "Lead Web Developer",
-        "period": "2014 - 2018",
-        "desc": "Built the university website using .NET and Umbraco. Later led the transition to a modern system using Python and Django."
-      },
-      "exp4": {
-        "company": "Freelance / Consulting",
-        "role": "Software Developer",
-        "period": "2012 - 2014",
-        "desc": "Worked on various web applications, custom plugins for payment/shipping providers, and desktop applications."
-      }
-    }
+    "tag": "Career & Leadership",
+    "title": "Professional Leadership & Work History",
+    "keyAchievements": "Key Engineering Wins:"
+  },
+  "github": {
+    "tag": "Open Source & Live Telemetry",
+    "title": "Public Repositories & Real-Time Activity",
+    "desc": "Real-time feed fetched directly from the GitHub REST API for @ak01redwan.",
+    "stars": "Stars",
+    "forks": "Forks",
+    "updated": "Updated",
+    "viewAll": "Explore GitHub Profile",
+    "fallbackNotice": "Live activity fetched with automated caching."
   },
   "contact": {
-    "tag": "Contact",
-    "title": "Let's build something scalable together.",
-    "desc": "I am available for senior-level roles, architectural consulting, and high-impact software projects.",
-    "info": {
-      "email": "Email Me",
-      "phone": "Call Me",
-      "location": "Location"
-    },
+    "tag": "Direct Engagement",
+    "title": "Let's Engineer High-Availability Systems.",
+    "desc": "Available for Technical Lead appointments, enterprise architecture consultations, and strategic engineering contracts. Based in Mukalla, Yemen, delivering worldwide.",
+    "slaTitle": "Service Level Agreement (SLA)",
+    "slaDesc": "Inquiries receive a direct technical response within 24 hours.",
+    "emailLabel": "Executive Email",
+    "phoneLabel": "Direct Phone / WhatsApp",
+    "locationLabel": "Headquarters Location",
     "form": {
-      "name": "Full Name",
+      "name": "Your Name",
       "email": "Email Address",
-      "subject": "Subject",
-      "message": "Message",
-      "placeholder": {
-        "name": "Abdulrahman Redhwan",
-        "email": "ak01redwan@gmail.com",
-        "subject": "Project Inquiry",
-        "message": "Tell me about your project needs..."
-      },
-      "send": "Send Message"
-    },
-    "extra": {
-      "availability": {
-        "title": "Availability",
-        "desc": "Open to senior backend-focused roles and system architecture consulting."
-      },
-      "response": {
-        "title": "Response Time",
-        "desc": "I typically respond within 24 hours."
-      },
-      "socials": {
-        "title": "Socials",
-        "desc": "Connect with me on professional and developer platforms."
-      }
+      "subject": "Inquiry Subject",
+      "message": "Project Scope & Requirements",
+      "namePlaceholder": "e.g., Alex Vance",
+      "emailPlaceholder": "alex@company.com",
+      "subjectPlaceholder": "e.g., Technical Lead / Architecture Consultation",
+      "messagePlaceholder": "Describe your project timeline, technical stack, or architecture goals...",
+      "send": "Transmit Message",
+      "sending": "Transmitting...",
+      "successTitle": "Message Received Successfully!",
+      "successDesc": "Thank you for reaching out. I will review your requirements and reply within 24 hours.",
+      "error": "Failed to send message. Please reach out directly via email or WhatsApp."
     }
   },
   "blog": {
-    "title": "Insights & Articles",
-    "desc": "Thoughts on software engineering, architecture, and technology.",
-    "readMore": "Read More",
-    "backToBlog": "Back to Blog",
-    "sharePost": "Share this post",
-    "posts": {
-      "p1": {
-        "title": "Scaling E-commerce with nopCommerce Integrations",
-        "excerpt": "Exploring best practices for building custom payment and shipping integrations...",
-        "category": "E-commerce"
-      },
-      "p2": {
-        "title": "Modernizing University Systems: .NET to Django",
-        "excerpt": "A case study on transitioning large-scale CMS systems to modern architectures...",
-        "category": "Architecture"
-      },
-      "p3": {
-        "title": "Microservices Architecture for Scalable Platforms",
-        "excerpt": "Deep dive into building resilient and maintainable microservices systems...",
-        "category": "Backend"
-      }
-    }
+    "tag": "Technical Publications",
+    "title": "Engineering Insights & System Architecture",
+    "desc": "Deep dives on CI/CD automation, CNC machine design, and high-concurrency backend optimization.",
+    "readArticle": "Read Full Article",
+    "backToBlog": "Back to Publications",
+    "shareArticle": "Share this Insight"
+  },
+  "command": {
+    "placeholder": "Type a command or search pages, skills, projects...",
+    "navigation": "Navigation",
+    "theme": "Theme Controls",
+    "language": "Language",
+    "contact": "Direct Channels",
+    "lightMode": "Switch to Light Mode",
+    "darkMode": "Switch to Dark Mode",
+    "switchToAr": "التبديل إلى العربية (Arabic)",
+    "switchToEn": "Switch to English",
+    "copyEmail": "Copy Primary Email",
+    "copyPhone": "Copy Phone Number",
+    "emailCopied": "Email copied to clipboard!",
+    "phoneCopied": "Phone copied to clipboard!"
+  },
+  "resume": {
+    "title": "Curriculum Vitae",
+    "subtitle": "Abdulrahman Khalid Abdullah Redhwan • Full-Stack Engineer & Technical Lead",
+    "print": "Print / Save as PDF",
+    "back": "Back to Portfolio"
   },
   "footer": {
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "builtWith": "Built with Next.js 16 (App Router), Tailwind CSS v4 & Framer Motion.",
+    "scrollToTop": "Back to Top"
   }
 }

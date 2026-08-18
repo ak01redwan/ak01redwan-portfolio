@@ -1,14 +1,17 @@
+"use client";
+
 import { useState, useEffect } from 'react';
-import { Moon, Sun, Menu, X, Languages } from 'lucide-react';
+import { Moon, Sun, Menu, X, Languages, FileText } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Link, useLocation } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useTranslation } from '@/context/LanguageContext';
 
 export default function Navbar() {
   const [isDark, setIsDark] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
@@ -20,7 +23,6 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    // Apply theme class to html element
     if (isDark) {
       document.documentElement.classList.add('dark');
     } else {
@@ -37,87 +39,88 @@ export default function Navbar() {
     { name: t('nav.home'), href: '/' },
     { name: t('nav.about'), href: '/about' },
     { name: t('nav.projects'), href: '/projects' },
-    { name: t('nav.contact'), href: '/contact' },
     { name: t('nav.blog'), href: '/blog' },
+    { name: t('nav.contact'), href: '/contact' },
   ];
 
-  // Helper to check if link is active
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => pathname === path;
 
   return (
     <nav 
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/80 dark:bg-slate-950/80 backdrop-blur-md py-4 shadow-sm' : 'bg-transparent py-6'
+        scrolled ? 'bg-white/85 dark:bg-slate-950/85 backdrop-blur-md py-4 shadow-sm border-b border-slate-200/50 dark:border-slate-800/50' : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-        >
-          <Link to="/" className="text-2xl font-display font-bold tracking-tighter">
+        <div>
+          <Link href="/" className="text-xl sm:text-2xl font-display font-bold tracking-tight">
             AK01<span className="text-emerald-500">.</span>REDWAN
           </Link>
-        </motion.div>
+        </div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link, i) => (
-            <motion.div
-              key={link.name}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-            >
+        <div className="hidden md:flex items-center space-x-7">
+          {navLinks.map((link) => (
+            <div key={link.name}>
               <Link
-                to={link.href}
+                href={link.href}
                 className={`text-sm font-medium transition-colors ${
-                  isActive(link.href) ? 'text-emerald-500' : 'hover:text-emerald-500'
+                  isActive(link.href) ? 'text-emerald-500 font-bold' : 'hover:text-emerald-500 text-slate-700 dark:text-slate-300'
                 }`}
               >
                 {link.name}
               </Link>
-            </motion.div>
+            </div>
           ))}
+
+          {/* Resume CTA */}
+          <Link
+            href="/resume"
+            className="text-xs font-semibold px-3 py-1.5 rounded-lg border border-emerald-500/30 text-emerald-500 hover:bg-emerald-500/10 transition-colors flex items-center gap-1.5"
+          >
+            <FileText size={13} />
+            <span>CV</span>
+          </Link>
           
-          <div className="flex items-center gap-4 border-l border-slate-200 dark:border-slate-800 pl-8 rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-8">
+          <div className="flex items-center gap-3 border-l border-slate-200 dark:border-slate-800 pl-6 rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-6">
             <button
               onClick={toggleLanguage}
-              className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center gap-2 text-sm font-bold"
+              className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center gap-1.5 text-xs font-bold font-mono"
               aria-label="Toggle Language"
             >
-              <Languages size={20} />
+              <Languages size={15} />
               <span>{i18n.language.toUpperCase()}</span>
             </button>
             <button
               onClick={() => setIsDark(!isDark)}
-              className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
+              className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
               aria-label="Toggle Theme"
             >
-              {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
           </div>
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="md:hidden flex items-center space-x-4">
+        <div className="md:hidden flex items-center space-x-3">
           <button
             onClick={toggleLanguage}
-            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-sm font-bold"
+            className="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 transition-colors text-xs font-bold font-mono"
           >
             {i18n.language.toUpperCase()}
           </button>
           <button
             onClick={() => setIsDark(!isDark)}
-            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
-            {isDark ? <Sun size={20} /> : <Moon size={20} />}
+            {isDark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="p-2"
+            aria-label="Menu"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
@@ -135,15 +138,23 @@ export default function Navbar() {
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
-                  to={link.href}
+                  href={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`text-lg font-medium transition-colors ${
-                    isActive(link.href) ? 'text-emerald-500' : 'hover:text-emerald-500'
+                  className={`text-base font-medium transition-colors ${
+                    isActive(link.href) ? 'text-emerald-500 font-bold' : 'hover:text-emerald-500'
                   }`}
                 >
                   {link.name}
                 </Link>
               ))}
+              <Link
+                href="/resume"
+                onClick={() => setIsMenuOpen(false)}
+                className="text-base font-semibold text-emerald-500 flex items-center gap-2"
+              >
+                <FileText size={18} />
+                <span>{t('nav.downloadCv')}</span>
+              </Link>
             </div>
           </motion.div>
         )}

@@ -1,66 +1,109 @@
+"use client";
+
 import { motion } from 'motion/react';
-import { Server, Layout, Database, Terminal } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { 
+  Code2, 
+  Server, 
+  Layout, 
+  Cpu, 
+  GitBranch, 
+  Monitor, 
+  Database,
+  CheckCircle2,
+  Terminal
+} from 'lucide-react';
+import { useTranslation } from '@/context/LanguageContext';
+import { SKILL_CATEGORIES } from '../data/portfolioData';
 
 export default function Skills() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isAr = i18n.language === 'ar';
 
-  const skillGroups = [
-    {
-      title: t('skills.categories.backend'),
-      icon: <Server className="text-emerald-500" />,
-      skills: ['Django', 'Laravel', '.NET', 'Node.js', 'NestJS', 'REST APIs', 'Microservices'],
-    },
-    {
-      title: t('skills.categories.frontend'),
-      icon: <Layout className="text-blue-500" />,
-      skills: ['Vue.js', 'Nuxt.js', 'Tailwind CSS', 'JavaScript', 'TypeScript', 'HTML', 'CSS'],
-    },
-    {
-      title: t('skills.categories.databases'),
-      icon: <Database className="text-purple-500" />,
-      skills: ['MySQL', 'PostgreSQL', 'SQL databases', 'Database optimization'],
-    },
-    {
-      title: t('skills.categories.devops'),
-      icon: <Terminal className="text-orange-500" />,
-      skills: ['Git', 'Linux', 'Windows', 'API integrations', 'Payment gateways', 'Cloud hosting'],
-    },
-  ];
+  const getIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'Code2': return <Code2 className="w-6 h-6 text-emerald-500" />;
+      case 'Server': return <Server className="w-6 h-6 text-blue-500" />;
+      case 'Layout': return <Layout className="w-6 h-6 text-cyan-500" />;
+      case 'Cpu': return <Cpu className="w-6 h-6 text-amber-500" />;
+      case 'GitBranch': return <GitBranch className="w-6 h-6 text-indigo-500" />;
+      case 'Monitor': return <Monitor className="w-6 h-6 text-purple-500" />;
+      default: return <Database className="w-6 h-6 text-emerald-500" />;
+    }
+  };
 
   return (
-    <section id="skills" className="py-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-sm font-bold text-emerald-500 uppercase tracking-widest mb-4">{t('skills.tag')}</h2>
-          <h3 className="text-4xl font-display font-bold">{t('skills.title')}</h3>
+    <section id="skills" className="py-24 relative overflow-hidden bg-slate-50/50 dark:bg-slate-950/40">
+      {/* Ambient background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-emerald-500/5 dark:bg-emerald-500/10 blur-[140px] rounded-full pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-500 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
+            <Terminal size={14} />
+            {t('skills.tag')}
+          </span>
+          <h2 className="text-3xl md:text-5xl font-display font-bold mb-4 tracking-tight">
+            {t('skills.title')}
+          </h2>
+          <p className="text-slate-600 dark:text-slate-400 text-base md:text-lg leading-relaxed">
+            {t('skills.desc')}
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skillGroups.map((group, i) => (
-            <motion.div
-              key={group.title}
-              className="p-8 bg-white dark:bg-slate-950 rounded-3xl border border-slate-100 dark:border-slate-800 hover:border-emerald-500/30 transition-all group"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {SKILL_CATEGORIES.map((cat, i) => (
+            <div
+              key={cat.id}
+              className={`p-6 md:p-8 bg-white dark:bg-slate-900/90 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-xl hover:border-emerald-500/40 transition-all duration-300 flex flex-col justify-between group ${
+                cat.id === 'hardware' ? 'md:col-span-2 lg:col-span-1 border-amber-500/20 bg-amber-500/[0.02]' : ''
+              }`}
             >
-              <div className="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-slate-900 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                {group.icon}
-              </div>
-              <h4 className="text-xl font-bold mb-6">{group.title}</h4>
-              <div className="flex flex-wrap gap-2">
-                {group.skills.map((skill) => (
-                  <span 
-                    key={skill}
-                    className="px-3 py-1 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-400 text-sm rounded-lg border border-slate-100 dark:border-slate-800"
-                  >
-                    {skill}
+              <div>
+                {/* Header */}
+                <div className="flex items-center justify-between mb-6">
+                  <div className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800 group-hover:scale-110 transition-transform duration-300 border border-slate-200/60 dark:border-slate-700/60">
+                    {getIcon(cat.icon)}
+                  </div>
+                  <span className="text-xs font-mono font-bold text-slate-400 dark:text-slate-500">
+                    0{i + 1}
                   </span>
-                ))}
+                </div>
+
+                <h3 className="text-xl font-bold font-display mb-2 text-slate-900 dark:text-white">
+                  {isAr ? cat.titleAr : cat.title}
+                </h3>
+                
+                <p className="text-xs text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
+                  {isAr ? cat.descriptionAr : cat.description}
+                </p>
+
+                {/* Skills list */}
+                <div className="space-y-2.5 mb-6">
+                  {cat.skills.map((skill) => (
+                    <div 
+                      key={skill.name}
+                      className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-100 dark:border-slate-800/60 flex items-center justify-between text-xs"
+                    >
+                      <div className="font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        {skill.name}
+                      </div>
+                      {skill.context && (
+                        <span className="text-[11px] font-mono text-slate-400 dark:text-slate-500 truncate max-w-[150px]">
+                          {skill.context}
+                        </span>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </motion.div>
+
+              <div className="pt-4 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                <span>{cat.skills.length} Capabilities</span>
+                <span className="text-emerald-500 font-semibold">Production Caliber</span>
+              </div>
+            </div>
           ))}
         </div>
       </div>

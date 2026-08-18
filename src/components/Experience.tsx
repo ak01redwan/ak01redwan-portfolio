@@ -1,76 +1,102 @@
+"use client";
+
 import { motion } from 'motion/react';
-import { Briefcase } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { Briefcase, Building, Calendar, CheckCircle2 } from 'lucide-react';
+import { useTranslation } from '@/context/LanguageContext';
+import { EXPERIENCE_ITEMS } from '../data/portfolioData';
 
 export default function Experience() {
-  const { t } = useTranslation();
-
-  const experiences = [
-    {
-      company: t('experience.items.exp1.company'),
-      role: t('experience.items.exp1.role'),
-      period: t('experience.items.exp1.period'),
-      description: t('experience.items.exp1.desc'),
-    },
-    {
-      company: t('experience.items.exp2.company'),
-      role: t('experience.items.exp2.role'),
-      period: t('experience.items.exp2.period'),
-      description: t('experience.items.exp2.desc'),
-    },
-    {
-      company: t('experience.items.exp3.company'),
-      role: t('experience.items.exp3.role'),
-      period: t('experience.items.exp3.period'),
-      description: t('experience.items.exp3.desc'),
-    },
-    {
-      company: t('experience.items.exp4.company'),
-      role: t('experience.items.exp4.role'),
-      period: t('experience.items.exp4.period'),
-      description: t('experience.items.exp4.desc'),
-    },
-  ];
+  const { t, i18n } = useTranslation();
+  const isAr = i18n.language === 'ar';
 
   return (
     <section id="experience" className="py-24">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-sm font-bold text-emerald-500 uppercase tracking-widest mb-4">{t('experience.tag')}</h2>
-          <h3 className="text-4xl font-display font-bold">{t('experience.title')}</h3>
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-500 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
+            <Briefcase size={14} />
+            {t('experience.tag')}
+          </span>
+          <h2 className="text-3xl md:text-5xl font-display font-bold mb-4 tracking-tight">
+            {t('experience.title')}
+          </h2>
+          <p className="text-slate-600 dark:text-slate-400 text-base md:text-lg">
+            Track record across high-scale enterprise software development, distributed systems, and physical hardware R&D.
+          </p>
         </div>
 
         <div className="max-w-4xl mx-auto relative">
-          {/* Vertical Line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-slate-200 dark:bg-slate-800 hidden md:block" />
+          {/* Vertical Center Line */}
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-slate-200 dark:bg-slate-800 -translate-x-1/2" />
 
           <div className="space-y-12">
-            {experiences.map((exp, i) => (
-              <motion.div
-                key={exp.company}
-                className={`relative flex flex-col md:flex-row gap-8 ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+            {EXPERIENCE_ITEMS.map((exp, i) => (
+              <div
+                key={exp.id}
+                className={`relative flex flex-col md:flex-row gap-8 ${
+                  i % 2 === 0 ? 'md:flex-row-reverse' : ''
+                }`}
               >
-                {/* Timeline Dot */}
-                <div className="absolute left-0 md:left-1/2 top-0 w-10 h-10 bg-emerald-500 rounded-full -translate-x-1/2 hidden md:flex items-center justify-center text-white shadow-lg shadow-emerald-500/20 z-10">
-                  <Briefcase size={18} />
+                {/* Timeline Node */}
+                <div className="absolute left-4 md:left-1/2 top-0 w-8 h-8 bg-emerald-500 rounded-full -translate-x-1/2 flex items-center justify-center text-white shadow-lg shadow-emerald-500/30 z-10">
+                  <Briefcase size={14} />
                 </div>
 
-                <div className="md:w-1/2">
-                  <div className={`p-8 bg-white dark:bg-slate-950 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow ${i % 2 === 0 ? 'md:text-left rtl:md:text-right' : 'md:text-right rtl:md:text-left'}`}>
-                    <span className="text-emerald-500 font-bold text-sm mb-2 block">{exp.period}</span>
-                    <h4 className="text-2xl font-bold mb-1">{exp.role}</h4>
-                    <p className="text-slate-500 font-medium mb-4">{exp.company}</p>
-                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                      {exp.description}
-                    </p>
+                {/* Content Box */}
+                <div className="ml-10 md:ml-0 md:w-1/2">
+                  <div className="p-6 md:p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-emerald-500/40 transition-all">
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span className="text-xs font-mono font-bold text-emerald-500 bg-emerald-500/10 px-2.5 py-1 rounded-lg">
+                        {isAr ? exp.periodAr : exp.period}
+                      </span>
+                      <span className="text-xs text-slate-400 font-mono">
+                        {isAr ? exp.locationAr : exp.location}
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl font-bold font-display text-slate-900 dark:text-white mt-2">
+                      {isAr ? exp.roleAr : exp.role}
+                    </h3>
+                    
+                    <div className="text-sm font-semibold text-slate-600 dark:text-slate-400 mb-4 flex items-center gap-1.5">
+                      <Building size={14} className="text-slate-400" />
+                      <span>{isAr ? exp.companyAr : exp.company}</span>
+                    </div>
+
+                    <div className="space-y-2 mb-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                      {(isAr ? exp.descriptionAr : exp.description).map((desc, idx) => (
+                        <p key={idx}>{desc}</p>
+                      ))}
+                    </div>
+
+                    <div className="space-y-1.5 mb-4 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-950/80 border border-slate-100 dark:border-slate-800">
+                      <div className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider mb-2">
+                        KEY MEASURABLE OUTCOMES:
+                      </div>
+                      {(isAr ? exp.keyWinsAr : exp.keyWins).map((win, idx) => (
+                        <div key={idx} className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-300">
+                          <CheckCircle2 size={13} className="text-emerald-500 shrink-0 mt-0.5" />
+                          <span>{win}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Technologies list */}
+                    <div className="flex flex-wrap gap-1.5 pt-3 border-t border-slate-100 dark:border-slate-800">
+                      {exp.technologies.map((tech) => (
+                        <span 
+                          key={tech}
+                          className="px-2 py-0.5 rounded-md text-[11px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-                <div className="md:w-1/2" />
-              </motion.div>
+
+                <div className="hidden md:block md:w-1/2" />
+              </div>
             ))}
           </div>
         </div>

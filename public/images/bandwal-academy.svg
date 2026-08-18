@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="bgEdu" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="brandEdu" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bgEdu)" />
+
+  <!-- App Window Frame -->
+  <rect x="50" y="40" width="700" height="420" rx="14" fill="#0b1329" stroke="#334155" stroke-width="1.5" />
+  
+  <!-- Window Header -->
+  <rect x="50" y="40" width="700" height="40" rx="14" fill="#0f172a" />
+  <circle cx="75" cy="60" r="5" fill="#ef4444" />
+  <circle cx="92" cy="60" r="5" fill="#f59e0b" />
+  <circle cx="109" cy="60" r="5" fill="#10b981" />
+  <rect x="140" y="50" width="300" height="20" rx="6" fill="#1e293b" />
+  <text x="155" y="64" font-family="sans-serif" font-size="10" fill="#94a3b8">bandwal-academy.com/dashboard/architecture</text>
+
+  <!-- Sidebar -->
+  <rect x="50" y="80" width="160" height="380" fill="#0b1120" stroke="#1e293b" stroke-width="1" />
+  <g transform="translate(70, 110)">
+    <circle cx="10" cy="10" r="8" fill="#10b981" />
+    <text x="26" y="14" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700" fill="#ffffff">Bandwal</text>
+
+    <!-- Nav links -->
+    <rect x="0" y="40" width="120" height="28" rx="6" fill="#1e293b" />
+    <text x="12" y="58" font-family="sans-serif" font-size="11" font-weight="600" fill="#10b981">Courses &amp; HLS</text>
+    <text x="12" y="94" font-family="sans-serif" font-size="11" fill="#94a3b8">Exams Engine</text>
+    <text x="12" y="128" font-family="sans-serif" font-size="11" fill="#94a3b8">Enrollments</text>
+    <text x="12" y="162" font-family="sans-serif" font-size="11" fill="#94a3b8">Certificates</text>
+    <text x="12" y="196" font-family="sans-serif" font-size="11" fill="#94a3b8">CI/CD Pipeline</text>
+  </g>
+
+  <!-- Main Content Area -->
+  <g transform="translate(230, 100)">
+    <!-- Top KPI Cards -->
+    <rect x="0" y="0" width="145" height="75" rx="8" fill="url(#cardBg)" stroke="#334155" stroke-width="1" />
+    <text x="15" y="24" font-family="sans-serif" font-size="10" fill="#94a3b8">CI/CD DEPLOY TIME</text>
+    <text x="15" y="52" font-family="'Space Grotesk', sans-serif" font-size="22" font-weight="800" fill="#10b981">&lt; 3 Min</text>
+    <text x="95" y="50" font-family="sans-serif" font-size="9" fill="#34d399">Automated</text>
+
+    <rect x="160" y="0" width="150" height="75" rx="8" fill="url(#cardBg)" stroke="#334155" stroke-width="1" />
+    <text x="175" y="24" font-family="sans-serif" font-size="10" fill="#94a3b8">STACK ARCHITECTURE</text>
+    <text x="175" y="52" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="700" fill="#38bdf8">Laravel 12 + Nuxt 4</text>
+
+    <rect x="325" y="0" width="165" height="75" rx="8" fill="url(#cardBg)" stroke="#334155" stroke-width="1" />
+    <text x="340" y="24" font-family="sans-serif" font-size="10" fill="#94a3b8">STREAMING &amp; I18N</text>
+    <text x="340" y="52" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="700" fill="#a78bfa">HLS • RTL/LTR</text>
+
+    <!-- Video & Course Player Mockup -->
+    <rect x="0" y="95" width="310" height="230" rx="10" fill="#020617" stroke="#334155" stroke-width="1" />
+    <!-- Video Player Screen -->
+    <rect x="15" y="110" width="280" height="150" rx="6" fill="#0f172a" />
+    <circle cx="155" cy="185" r="22" fill="#10b981" />
+    <polygon points="150,175 165,185 150,195" fill="#ffffff" />
+    <text x="15" y="280" font-family="sans-serif" font-size="12" font-weight="700" fill="#f8fafc">Advanced Distributed Systems &amp; APIs</text>
+    <text x="15" y="300" font-family="sans-serif" font-size="10" fill="#94a3b8">HLS Adaptive Bitrate • Secure Tokens • Arabic &amp; English</text>
+
+    <!-- CI/CD GitHub Actions Pipeline Card -->
+    <rect x="325" y="95" width="165" height="230" rx="10" fill="url(#cardBg)" stroke="#334155" stroke-width="1" />
+    <text x="340" y="120" font-family="sans-serif" font-size="11" font-weight="700" fill="#ffffff">GitHub Actions Workflow</text>
+    
+    <g transform="translate(340, 135)">
+      <circle cx="8" cy="8" r="6" fill="#22c55e" />
+      <text x="22" y="12" font-family="monospace" font-size="10" fill="#cbd5e1">1. Lint &amp; Test (PHP/TS)</text>
+      
+      <circle cx="8" cy="38" r="6" fill="#22c55e" />
+      <text x="22" y="42" font-family="monospace" font-size="10" fill="#cbd5e1">2. Build Nuxt 4 SSR</text>
+
+      <circle cx="8" cy="68" r="6" fill="#22c55e" />
+      <text x="22" y="72" font-family="monospace" font-size="10" fill="#cbd5e1">3. Docker Containerize</text>
+
+      <circle cx="8" cy="98" r="6" fill="#22c55e" />
+      <text x="22" y="102" font-family="monospace" font-size="10" fill="#cbd5e1">4. Staging Deploy</text>
+
+      <circle cx="8" cy="128" r="6" fill="#22c55e" />
+      <text x="22" y="132" font-family="monospace" font-size="10" fill="#cbd5e1">5. Prod Zero-Downtime</text>
+    </g>
+
+    <rect x="340" y="290" width="135" height="22" rx="4" fill="#10b981" fill-opacity="0.15" />
+    <text x="407" y="305" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="700" fill="#34d399">Reduced from days to &lt;3m</text>
+  </g>
+</svg>
