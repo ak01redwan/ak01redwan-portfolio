@@ -53,7 +53,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <div>
-          <Link href="/" className="text-xl sm:text-2xl font-display font-bold tracking-tight">
+          <Link href="/" className="text-xl sm:text-2xl font-['Courier_New'] font-bold not-italic no-underline tracking-tight">
             AK01REDWAN
           </Link>
         </div>
