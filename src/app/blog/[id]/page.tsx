@@ -30,20 +30,39 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${post.title} | Engineering Insights`,
     description: post.excerpt,
+    keywords: [
+      post.title,
+      post.category,
+      'Software Architecture',
+      'Engineering Insights',
+      'Abdulrahman Redhwan',
+      'Madboot Nova',
+    ],
     alternates: {
       canonical: canonicalUrl,
+      languages: {
+        'en-US': canonicalUrl,
+        'ar-YE': canonicalUrl,
+        'x-default': canonicalUrl,
+      },
     },
     openGraph: {
       title: `${post.title} | Abdulrahman Redhwan`,
       description: post.excerpt,
       url: canonicalUrl,
       type: 'article',
-      authors: ['Abdulrahman Khalid Abdullah Redhwan'],
+      publishedTime: '2025-01-15T00:00:00.000Z',
+      modifiedTime: '2025-02-01T00:00:00.000Z',
+      section: post.category,
+      tags: [post.category, 'Software Engineering', 'Architecture'],
+      authors: ['https://madbootnova.com'],
       images: [
         {
-          url: '/og-image.png',
+          url: 'https://madbootnova.com/og-image.png',
+          secureUrl: 'https://madbootnova.com/og-image.png',
           width: 1200,
           height: 630,
+          type: 'image/png',
           alt: post.title,
         },
       ],
@@ -52,7 +71,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: ['/og-image.png'],
+      images: ['https://madbootnova.com/og-image.png'],
       creator: '@ak01redwan',
     },
   };
@@ -65,26 +84,33 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
+  const canonicalUrl = `https://madbootnova.com/blog/${post.id}`;
+
   const blogJsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'BlogPosting',
+        '@id': `${canonicalUrl}#article`,
         headline: post.title,
         description: post.excerpt,
-        datePublished: '2025-01-15',
+        datePublished: '2025-01-15T00:00:00.000Z',
+        dateModified: '2025-02-01T00:00:00.000Z',
+        inLanguage: ['en-US', 'ar-YE'],
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': canonicalUrl,
+        },
+        image: ['https://madbootnova.com/og-image.png'],
         author: {
-          '@type': 'Person',
-          name: 'Abdulrahman Khalid Abdullah Redhwan',
-          url: 'https://madbootnova.com',
+          '@id': 'https://madbootnova.com/#person',
         },
         publisher: {
-          '@type': 'Organization',
-          name: 'Madboot Nova',
-          url: 'https://madbootnova.com',
+          '@id': 'https://madbootnova.com/#organization',
         },
-        url: `https://madbootnova.com/blog/${post.id}`,
+        url: canonicalUrl,
         articleSection: post.category,
+        keywords: `${post.category}, Software Architecture, Engineering Insights`,
       },
       {
         '@type': 'BreadcrumbList',
@@ -105,7 +131,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             '@type': 'ListItem',
             position: 3,
             name: post.title,
-            item: `https://madbootnova.com/blog/${post.id}`,
+            item: canonicalUrl,
           },
         ],
       },

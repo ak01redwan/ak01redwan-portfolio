@@ -26,26 +26,47 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const canonicalUrl = `https://madbootnova.com/projects/${study.slug}`;
-
   const outcomeHighlights = study.measurableOutcomes.map(m => `${m.metric} ${m.label}`).join(', ');
+  const imageUrl = study.image.startsWith('http') ? study.image : `https://madbootnova.com${study.image}`;
 
   return {
-    title: `${study.title} | Enterprise Case Study`,
-    description: `${study.summary} Key outcomes: ${outcomeHighlights}.`,
+    title: `${study.title} | Systems Architecture Case Study`,
+    description: `${study.summary} Verified outcomes: ${outcomeHighlights}.`,
+    keywords: [
+      study.title,
+      ...study.technologies,
+      'Systems Architecture',
+      'Full-Stack Engineering',
+      'Case Study',
+      'Abdulrahman Redhwan',
+      'Madboot Nova',
+    ],
     alternates: {
       canonical: canonicalUrl,
+      languages: {
+        'en-US': canonicalUrl,
+        'ar-YE': canonicalUrl,
+        'x-default': canonicalUrl,
+      },
     },
     openGraph: {
       title: `${study.title} — Systems Architecture Case Study`,
       description: study.summary,
       url: canonicalUrl,
       type: 'article',
+      publishedTime: '2024-01-01T00:00:00.000Z',
+      modifiedTime: '2025-01-01T00:00:00.000Z',
+      authors: ['https://madbootnova.com'],
+      section: 'Software Architecture & Engineering',
+      tags: study.technologies,
       images: [
         {
-          url: study.image,
-          width: 800,
-          height: 500,
-          alt: study.title,
+          url: imageUrl,
+          secureUrl: imageUrl,
+          width: 1200,
+          height: 630,
+          type: 'image/png',
+          alt: `${study.title} Architecture Case Study`,
         },
       ],
     },
@@ -53,7 +74,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title: `${study.title} | Abdulrahman Redhwan`,
       description: study.summary,
-      images: [study.image],
+      images: [imageUrl],
       creator: '@ak01redwan',
     },
   };
@@ -66,26 +87,44 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
     notFound();
   }
 
+  const imageUrl = study.image.startsWith('http') ? study.image : `https://madbootnova.com${study.image}`;
+  const canonicalUrl = `https://madbootnova.com/projects/${study.slug}`;
+
   const projectJsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'TechArticle',
-        headline: study.title,
+        '@id': `${canonicalUrl}#article`,
+        headline: `${study.title} — Enterprise Engineering Case Study`,
         description: study.summary,
-        image: [study.image],
+        image: [imageUrl],
+        url: canonicalUrl,
+        inLanguage: ['en-US', 'ar-YE'],
+        datePublished: '2024-01-01T00:00:00.000Z',
+        dateModified: '2025-01-01T00:00:00.000Z',
+        proficiencyLevel: 'Expert',
         author: {
-          '@type': 'Person',
-          name: 'Abdulrahman Khalid Abdullah Redhwan',
-          url: 'https://madbootnova.com',
+          '@id': 'https://madbootnova.com/#person',
         },
         publisher: {
-          '@type': 'Organization',
-          name: 'Madboot Nova',
-          url: 'https://madbootnova.com',
+          '@id': 'https://madbootnova.com/#organization',
         },
-        url: `https://madbootnova.com/projects/${study.slug}`,
-        about: study.technologies,
+        about: study.technologies.map((tech) => ({
+          '@type': 'Thing',
+          name: tech,
+        })),
+        keywords: study.technologies.join(', '),
+      },
+      {
+        '@type': 'SoftwareSourceCode',
+        '@id': `${canonicalUrl}#software`,
+        name: study.title,
+        programmingLanguage: study.technologies.filter(t => !t.includes('DevOps') && !t.includes('Hardware')),
+        abstract: study.summary,
+        author: {
+          '@id': 'https://madbootnova.com/#person',
+        },
       },
       {
         '@type': 'BreadcrumbList',
@@ -106,7 +145,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             '@type': 'ListItem',
             position: 3,
             name: study.title,
-            item: `https://madbootnova.com/projects/${study.slug}`,
+            item: canonicalUrl,
           },
         ],
       },

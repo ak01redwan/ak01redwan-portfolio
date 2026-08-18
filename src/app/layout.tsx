@@ -12,15 +12,43 @@ export const metadata: Metadata = {
     default: 'Abdulrahman Khalid Abdullah Redhwan | Full-Stack Software Engineer & Technical Lead',
     template: '%s | Abdulrahman Redhwan (ak01redwan)',
   },
-  description: 'Executive Portfolio of Abdulrahman Khalid Abdullah Redhwan (ak01redwan) — Founder of Madboot Nova, Full-Stack Engineer & Technical Lead specializing in Laravel 12, Nuxt.js 4, Next.js, .NET Core, automated CI/CD pipelines, and custom 3-Axis CNC hardware engineering.',
-  keywords: 'Abdulrahman Khalid Abdullah Redhwan, ak01redwan, Abdurhman Khalid Abdullh Redwan, عبدالرحمن خالد عبدالله رضوان, Full-Stack Software Engineer, Technical Lead, Madboot Nova, Laravel 12, Nuxt 4, Next.js 16, .NET Core, CNC Machine, G-Code, Arduino GRBL Marlin, CI/CD Automation, Yemen Software Engineer',
-  authors: [{ name: 'Abdulrahman Khalid Abdullah Redhwan' }],
+  description: 'Executive Engineering Portfolio of Abdulrahman Khalid Abdullah Redhwan (ak01redwan) — Founder of Madboot Nova, Full-Stack Engineer & Technical Lead specializing in Laravel 12, Nuxt.js 4, Next.js 16, .NET Core, automated CI/CD pipelines, and custom 3-Axis CNC hardware engineering.',
+  keywords: [
+    'Abdulrahman Khalid Abdullah Redhwan',
+    'ak01redwan',
+    'Abdurhman Khalid Abdullh Redwan',
+    'عبدالرحمن خالد عبدالله رضوان',
+    'Full-Stack Software Engineer',
+    'Technical Lead',
+    'Madboot Nova',
+    'Laravel 12',
+    'Nuxt 4',
+    'Next.js 16',
+    '.NET Core',
+    'CNC Machine Engineering',
+    'G-Code & M-Code',
+    'Arduino GRBL Marlin',
+    'CI/CD Automation',
+    'DevOps Engineer',
+    'Yemen Software Engineer',
+    'Hadhramaut Developer',
+  ],
+  authors: [{ name: 'Abdulrahman Khalid Abdullah Redhwan', url: 'https://madbootnova.com' }],
   creator: 'Abdulrahman Khalid Abdullah Redhwan (ak01redwan)',
   publisher: 'Madboot Nova',
+  category: 'technology',
+  classification: 'Software Engineering, Systems Architecture & Hardware Prototyping',
   manifest: '/site.webmanifest',
   icons: {
-    icon: '/favicon.svg',
-    apple: '/apple-touch-icon.png',
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: ['/favicon.svg'],
   },
   openGraph: {
     title: 'Abdulrahman Khalid Abdullah Redhwan | Full-Stack Software Engineer & Technical Lead',
@@ -28,12 +56,15 @@ export const metadata: Metadata = {
     url: 'https://madbootnova.com',
     siteName: 'Abdulrahman Redhwan Engineering Portfolio',
     locale: 'en_US',
+    alternateLocale: ['ar_YE', 'ar'],
     type: 'website',
     images: [
       {
-        url: '/og-image.png',
+        url: 'https://madbootnova.com/og-image.png',
+        secureUrl: 'https://madbootnova.com/og-image.png',
         width: 1200,
         height: 630,
+        type: 'image/png',
         alt: 'Abdulrahman Khalid Abdullah Redhwan — Full-Stack Software Engineer & Technical Lead',
       },
     ],
@@ -42,15 +73,22 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Abdulrahman Khalid Abdullah Redhwan | Full-Stack Software Engineer & Technical Lead',
     description: 'Founder of Madboot Nova. Full-Stack Engineer bridging scalable software architectures (Laravel, Next.js, .NET) with physical CNC hardware automation.',
-    images: ['/og-image.png'],
+    images: ['https://madbootnova.com/og-image.png'],
     creator: '@ak01redwan',
+    site: '@ak01redwan',
   },
   alternates: {
     canonical: 'https://madbootnova.com',
+    languages: {
+      'en-US': 'https://madbootnova.com',
+      'ar-YE': 'https://madbootnova.com',
+      'x-default': 'https://madbootnova.com',
+    },
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -74,10 +112,30 @@ const jsonLdData = {
         'عبدالرحمن خالد عبدالله رضوان'
       ],
       jobTitle: 'Full-Stack Software Engineer & Technical Lead',
-      description: 'Senior Full-Stack Engineer, Founder of Madboot Nova, and Physical Hardware Maker with 5+ years of experience.',
+      description: 'Senior Full-Stack Engineer, Founder of Madboot Nova, and Physical Hardware Maker with 5+ years of production experience in enterprise software and CNC fabrication.',
       url: 'https://madbootnova.com',
+      image: 'https://madbootnova.com/profile.png',
       email: 'mailto:ak01redwan@gmail.com',
       telephone: '+967776716697',
+      gender: 'Male',
+      knowsLanguage: [
+        {
+          '@type': 'Language',
+          name: 'English',
+          alternateName: 'en'
+        },
+        {
+          '@type': 'Language',
+          name: 'Arabic',
+          alternateName: 'ar'
+        }
+      ],
+      hasOccupation: {
+        '@type': 'Occupation',
+        name: 'Full-Stack Software Engineer',
+        occupationalCategory: '15-1252.00',
+        skills: 'Laravel, Next.js, Nuxt.js, .NET Core, TypeScript, CI/CD Automation, CNC Machine Engineering'
+      },
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Al-Mukalla',
@@ -114,14 +172,14 @@ const jsonLdData = {
         'TypeScript',
         '.NET Core',
         'C#',
-        'SQL Server',
+        'SQL Server & PostgreSQL',
         'Automated CI/CD',
         'GitHub Actions',
         'CNC Machine Engineering',
         'G-Code & M-Code',
         'Arduino Microcontrollers',
         'GRBL and Marlin Firmware',
-        'Docker'
+        'Docker & Containerization'
       ]
     },
     {
@@ -130,8 +188,16 @@ const jsonLdData = {
       name: 'Madboot Nova',
       url: 'https://madbootnova.com',
       logo: 'https://madbootnova.com/icon-512.png',
+      image: 'https://madbootnova.com/og-image.png',
       founder: {
         '@id': 'https://madbootnova.com/#person'
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'technical support',
+        email: 'ak01redwan@gmail.com',
+        telephone: '+967776716697',
+        availableLanguage: ['English', 'Arabic']
       },
       description: 'Elite software engineering agency delivering high-throughput web platforms, SaaS ecosystems, and enterprise architectures.'
     },
@@ -139,11 +205,60 @@ const jsonLdData = {
       '@type': 'WebSite',
       '@id': 'https://madbootnova.com/#website',
       url: 'https://madbootnova.com',
-      name: 'Abdulrahman Redhwan Portfolio',
+      name: 'Abdulrahman Redhwan Portfolio & Engineering Portal',
       publisher: {
         '@id': 'https://madbootnova.com/#person'
       },
-      inLanguage: ['en', 'ar']
+      inLanguage: ['en-US', 'ar-YE']
+    },
+    {
+      '@type': 'ItemList',
+      '@id': 'https://madbootnova.com/#sitenavigation',
+      name: 'Main Site Navigation',
+      itemListElement: [
+        {
+          '@type': 'SiteNavigationElement',
+          position: 1,
+          name: 'Home',
+          description: 'Executive Engineering Overview & Hero Stack',
+          url: 'https://madbootnova.com/'
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 2,
+          name: 'About',
+          description: 'Engineering Philosophy, Timeline & Technical Proficiencies',
+          url: 'https://madbootnova.com/about'
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 3,
+          name: 'Projects & Case Studies',
+          description: 'Enterprise Software Architectures & Hardware Builds',
+          url: 'https://madbootnova.com/projects'
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 4,
+          name: 'Resume & Credentials',
+          description: 'Verified Engineering Experience and Tech Stack',
+          url: 'https://madbootnova.com/resume'
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 5,
+          name: 'Engineering Blog',
+          description: 'Technical Deep Dives & Architectural Guides',
+          url: 'https://madbootnova.com/blog'
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 6,
+          name: 'Contact',
+          description: 'Direct Consultation & Architectural Inquiry',
+          url: 'https://madbootnova.com/contact'
+        }
+      ]
     }
   ]
 };
